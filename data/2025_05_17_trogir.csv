@@ -1,0 +1,24 @@
+# METADATA
+Key,Value
+tripId,2025-05-17-trogir
+title,Sailing trip from Trogir
+startDate,2025-05-17
+endDate,2025-05-24
+boatName,Ladybug
+boatModel,Oceanis 46.1
+yearOfManufacture,2020
+homeMarina,Trogir
+crew,"Michal Puffler; Dominika Pufflerová; Braňo Košík; Mary; Marek Mrva; Katka Tuharská; Miro Jankovič"
+captains,"Ondrej Puffler; Vlado Sredau; Jano Neščivera"
+priceEur,2305
+
+# DAILY LOGS
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
+1,2025-05-17,30.4,4:59,2.91,0:42,J,,Paklinské ostrovy,,Vinogradišče,bója
+2,2025-05-18,18.74,3:36,0.0,0:00,JV,,Korčula,Vela Luka,,bója
+3,2025-05-19,29.97,5:51,5.16,1:26,V,,Korčula,Korčula,,marína
+4,2025-05-20,43.95,7:31,20.66,3:54,SZ,,Hvar,Vrboska,,marína
+5,2025-05-21,0.0,0:00,0.0,0:00,,,,Hvar,Vrboska,,marína
+6,2025-05-22,28.56,6:31,10.08,3:06,SZ,,Šolta,,Šešula,kotva
+7,2025-05-23,9.34,1:49,0.0,0:00,SZ,,,Trogir,,marína
+8,2025-05-24,0.0,0:00,0.0,0:00,,,,,,

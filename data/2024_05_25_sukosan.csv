@@ -1,0 +1,24 @@
+# METADATA
+Key,Value
+tripId,2024-05-25-sukosan
+title,Sailing trip from Sukošan
+startDate,2024-05-25
+endDate,2024-06-01
+boatName,Everest
+boatModel,Bavaria 51 BT
+yearOfManufacture,2020
+homeMarina,Sukoshan
+crew,"Michal Puffler; Dominika Pufflerová; Dano Šimek; Adriana Kratochvílová; Tomáš Rácek; Jakub Kondela; Miro Jankovič; Dano Végh; Miro Vincze; Katka Vincze"
+captains,"Ondrej Puffler; Vlado Sredau"
+priceEur,2746
+
+# DAILY LOGS
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
+1,2024-05-25,30.38,4:27,3.29,0:43,JV,,Kaprije,Kaprije,,boja
+2,2024-05-26,21.95,4:11,0.0,0:00,JV,,,Rogoznica,,molo
+3,2024-05-27,14.73,2:41,0.0,0:00,SZ,Žirje,,,Vela Stupica,boja
+4,2024-05-28,23.56,4:03,4.34,0:55,SZ,Kornaty,,Vrulje,,boja
+5,2024-05-29,12.08,2:13,0.5,0:21,SZ,Dugi Otok,,Sali,,molo
+6,2024-05-30,31.85,7:18,21.0,4:28,SV,Ugljan,,Kukljica,,molo
+7,2024-05-31,0.0,0:00,0.0,0:00,Ugljan,,Kukljica,,molo
+8,2024-06-01,3.0,0:30,0.0,0:00,SV,,,,,

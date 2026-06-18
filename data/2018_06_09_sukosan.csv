@@ -1,0 +1,24 @@
+# METADATA
+Key,Value
+tripId,2018-06-09-sukosan
+title,Sailing trip from Sukošan
+startDate,2018-06-09
+endDate,2018-06-16
+boatName,Iris 1
+boatModel,Bavaria Cruiser 46
+yearOfManufacture,2015
+homeMarina,Sukoshan
+crew,"Michal Puffler; Dominika Pufflerová; Miro Jankovič; Mišo Zima; Andrea Ferková; Matúš Maras; Izabela Marasová; Martin Drozdík; Sophie Drozdíková"
+captains,"Jano Neščivera"
+priceEur,2228
+
+# DAILY LOGS
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
+1,2018-06-09,0.0,0:00,0.0,0:00,,,Sukoshan,,marina
+2,2018-06-10,41.8,8:28,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,boja
+3,2018-06-11,7.8,4:31,13.47,1:06,JV,Lod,Dugi Otok,,Sakarun,boja
+4,2018-06-12,30.9,9:27,15.93,1:26,JV,Ponorkovy bunker,Dugi Otok,Sali,,molo
+5,2018-06-13,29.5,9:38,0.0,0:00,JZ,"Zatoka medzi Striznja a Vrulje",Dugi Otok,,Mir,boja
+6,2018-06-14,21.0,9:22,11.51,2:05,V,"Zatoka pri prieplave",Vrgada,Vrgada,,boja
+7,2018-06-15,16.2,3:55,0.0,0:00,SZ,,,Sukoshan,,marina
+8,2018-06-16,0.0,0:00,0.0,0:00,,,,,,
