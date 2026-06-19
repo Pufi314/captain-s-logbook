@@ -37,6 +37,7 @@ boatName,Nabucco
 boatModel,Bavaria Cruiser 46
 yearOfManufacture,2012
 homeMarina,Sukoshan
+captain,Michal Puffler
 crew,"Michal Puffler; Dominika Pufflerová; Ondrej Kollár"
 captains,"Jano Neščivera; Jano Marcinčin"
 priceEur,2556
@@ -66,6 +67,7 @@ This section begins with the `# METADATA` comment and holds top-level configurat
 | **boatModel** | Manufacturer & Model of the boat | String | `Bavaria Cruiser 46` |
 | **yearOfManufacture** | The year the boat was built | Integer | `2012` |
 | **homeMarina** | Home marina of the boat | String | `Sukoshan` |
+| **captain** | Captain of this boat | String | `Michal Puffler` |
 | **crew** | List of crew members | Semicolon-separated string (quoted) | `"Person A; Person B"` |
 | **captains** | Captains of other companion boats | Semicolon-separated string (quoted) | `"Captain A; Captain B"` |
 | **priceEur** | Total price of the boat rental | Numeric / Float | `2556` |
