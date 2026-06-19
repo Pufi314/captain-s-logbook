@@ -19,10 +19,10 @@ function App() {
   const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
   useEffect(() => {
-    fetch('/data/data-index.json')
+    fetch('data/data-index.json')
       .then(res => res.json())
       .then(files => Promise.all(files.map(file => 
-        fetch(`/data/${file}`).then(res => res.text()).then(text => parseLogFile(text))
+        fetch(`data/${file}`).then(res => res.text()).then(text => parseLogFile(text))
       )))
       .then(data => setTrips(data));
   }, []);
