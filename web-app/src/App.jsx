@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
-import { parseLogFile, buildCityIndex } from './utils/logProcessor';
+import { parseLogFile, buildCityIndex, buildCrewIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
 import TripSelector from './components/TripSelector';
 import CitySelector from './components/CitySelector';
 import CityDetail from './components/CityDetail';
+import CrewSelector from './components/CrewSelector';
+import CrewDetail from './components/CrewDetail';
 import { Compass } from 'lucide-react';
 import bgImage from './assets/20240719_112113.jpg';
 
@@ -12,7 +14,9 @@ function App() {
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCrew, setSelectedCrew] = useState(null);
   const cityIndex = useMemo(() => buildCityIndex(trips), [trips]);
+  const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
   useEffect(() => {
     fetch('/data/data-index.json')
@@ -52,6 +56,15 @@ function App() {
           {selectedCity && (
             <div className="border-t pt-4">
               <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+          <CrewSelector crewIndex={crewIndex} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
+          {selectedCrew && (
+            <div className="border-t pt-4">
+              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} />
             </div>
           )}
         </div>

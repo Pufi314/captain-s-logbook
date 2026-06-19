@@ -68,6 +68,16 @@
 - **Crew:** unique crew names in pill badges (alphabetically sorted); "No crew data" fallback
 - People scope: only crew (from metadata.crew), deduplicated across all trips
 
+## Crew Selector
+- Card below City card, same dropdown + detail layout
+- Dropdown with all crew members, sorted alphabetically (Czech locale)
+- "Select a Crew Member to View Their Trips:" heading
+
+## Crew Detail
+- **Header:** crew member name with User icon + close button
+- **Trips:** each as `startDate — title`, sorted chronologically
+- **Overnight Cities:** unique city names in pill badges, alphabetically sorted
+
 ## Styling & CSS
 - Tailwind CSS v4 via single `@import "tailwindcss"`
 - Card-based design: white bg, shadow, rounded corners, gray border

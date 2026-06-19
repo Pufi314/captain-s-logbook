@@ -157,3 +157,30 @@ export const buildCityIndex = (trips) => {
 
   return cityMap;
 };
+
+export const buildCrewIndex = (trips) => {
+  const crewMap = new Map();
+
+  for (const trip of trips) {
+    const crew = trip.metadata.crew || [];
+    const cities = new Set();
+    for (const log of trip.dailyLogs) {
+      if (log.overnightCity) cities.add(log.overnightCity);
+    }
+
+    for (const name of crew) {
+      if (!crewMap.has(name)) {
+        crewMap.set(name, { trips: [], cities: new Set() });
+      }
+      const entry = crewMap.get(name);
+      entry.trips.push({ startDate: trip.metadata.startDate, title: trip.metadata.title });
+      cities.forEach(c => entry.cities.add(c));
+    }
+  }
+
+  for (const data of crewMap.values()) {
+    data.trips.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  }
+
+  return crewMap;
+};
