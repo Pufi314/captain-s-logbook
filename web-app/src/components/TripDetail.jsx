@@ -17,7 +17,7 @@ const TripDetail = ({ trip, onClose }) => {
   );
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <div>
       <div className="flex items-center justify-between border-b pb-4 mb-6">
         <h2 className="text-2xl font-bold text-gray-800">{metadata.title}</h2>
         <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title="Close">

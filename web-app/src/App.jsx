@@ -35,15 +35,26 @@ function App() {
       <main className="max-w-6xl mx-auto p-4 space-y-6">
         {trips.length > 0 && <Dashboard trips={trips} />}
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-          <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
-          <TripSelector trips={trips} onSelect={setSelectedTrip} />
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+          <div>
+            <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
+            <TripSelector trips={trips} onSelect={setSelectedTrip} />
+          </div>
+          {selectedTrip && (
+            <div className="border-t pt-4">
+              <TripDetail trip={selectedTrip} onClose={() => setSelectedTrip(null)} />
+            </div>
+          )}
         </div>
 
-        {selectedTrip && <TripDetail trip={selectedTrip} onClose={() => setSelectedTrip(null)} />}
-
-        <CitySelector cityIndex={cityIndex} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
-        {selectedCity && <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />}
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+          <CitySelector cityIndex={cityIndex} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
+          {selectedCity && (
+            <div className="border-t pt-4">
+              <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />
+            </div>
+          )}
+        </div>
       </main>
     </div>
   );

@@ -7,7 +7,7 @@ const CityDetail = ({ city, data, onClose }) => {
   const sortedCrew = Array.from(data.crew).sort((a, b) => a.localeCompare(b, 'cs'));
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <div>
       <div className="flex items-center justify-between border-b pb-4 mb-6">
         <div className="flex items-center gap-3">
           <MapPin className="w-6 h-6 text-blue-700" />
