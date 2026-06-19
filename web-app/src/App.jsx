@@ -3,6 +3,8 @@ import { parseLogFile } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
 import TripSelector from './components/TripSelector';
+import { Compass } from 'lucide-react';
+import bgImage from './assets/20240719_112113.jpg';
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -18,14 +20,24 @@ function App() {
   }, []);
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-center">Sailing Logbook</h1>
-      
-      {trips.length > 0 && <Dashboard trips={trips} />}
+    <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})` }}>
+      <header className="bg-[#1a365d] text-white p-4 shadow-lg">
+        <div className="max-w-6xl mx-auto flex items-center gap-3">
+          <Compass className="w-8 h-8" />
+          <h1 className="text-2xl font-bold">Captain's Logbook Dashboard</h1>
+        </div>
+      </header>
 
-      <TripSelector trips={trips} onSelect={setSelectedTrip} />
+      <main className="max-w-6xl mx-auto p-4 space-y-6">
+        {trips.length > 0 && <Dashboard trips={trips} />}
 
-      {selectedTrip && <TripDetail trip={selectedTrip} />}
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
+          <TripSelector trips={trips} onSelect={setSelectedTrip} />
+        </div>
+
+        {selectedTrip && <TripDetail trip={selectedTrip} onClose={() => setSelectedTrip(null)} />}
+      </main>
     </div>
   );
 }

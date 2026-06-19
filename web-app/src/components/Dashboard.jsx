@@ -1,5 +1,6 @@
 import React from 'react';
 import { aggregateStats } from '../utils/logProcessor';
+import { Anchor, LifeBuoy, Clock, MapPin, Compass, Ship } from 'lucide-react';
 
 const Dashboard = ({ trips }) => {
   const aggregated = aggregateStats(trips);
@@ -10,37 +11,53 @@ const Dashboard = ({ trips }) => {
     .map(([city, count]) => `${city} (${count})`)
     .join(', ');
   
-  const StatCard = ({ title, value }) => (
-    <div className="bg-white p-4 rounded shadow">
-      <h3 className="text-gray-500 text-sm">{title}</h3>
-      <p className="text-lg font-bold">{value}</p>
+  const StatCard = ({ title, value, icon: Icon, subtitle }) => (
+    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4">
+      {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
+      <div>
+        <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
+        <p className="text-2xl font-bold text-gray-800">{value}</p>
+        {subtitle && <p className="text-sm text-gray-500 mt-1">{subtitle}</p>}
+      </div>
     </div>
   );
 
   return (
-    <>
-      <div className="text-lg font-semibold text-gray-700 mb-2">Summary</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <StatCard title="Total Miles" value={aggregated.totalMiles.toFixed(1) + ' nm'} />
-        <StatCard title="Total Hours" value={(aggregated.totalMinutes / 60).toFixed(1) + ' h'} />
-        <StatCard title="Sails Miles %" value={((aggregated.sailsMiles / (aggregated.totalMiles || 1)) * 100).toFixed(1) + '%'} />
-        <StatCard title="Sails Time %" value={((aggregated.sailsMinutes / (aggregated.totalMinutes || 1)) * 100).toFixed(1) + '%'} />
-        <StatCard title="Anchor %" value={((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'} />
-        <StatCard title="Buoy %" value={((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'} />
-        <div className="bg-white p-4 rounded shadow md:col-span-2">
-          <h3 className="text-gray-500 text-sm">Mostly Visited Cities</h3>
-          <p className="text-lg font-bold">{topCities || 'N/A'}</p>
+    <div className="space-y-6">
+      <section>
+        <h2 className="text-xl font-bold text-white mb-4">General Statistics</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StatCard title="Total Miles" value={aggregated.totalMiles.toFixed(1) + ' NM'} icon={Compass} />
+          <StatCard title="Total Hours" value={(aggregated.totalMinutes / 60).toFixed(1) + ' h'} icon={Clock} />
+          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Ship className="w-6 h-6" /></div>
+            <div>
+              <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Miles</h3>
+              <p className="text-lg font-bold">{((aggregated.sailsMiles / (aggregated.totalMiles || 1)) * 100).toFixed(1)}%</p>
+              <p className="text-sm text-gray-500">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
+            </div>
+          </div>
+          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-6 h-6" /></div>
+            <div>
+              <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Anchor/Buoy %</h3>
+              <p className="text-lg font-bold">Anchor: {((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
+              <p className="text-lg font-bold">Buoy: {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="text-lg font-semibold text-gray-700 mb-2">Records</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <StatCard title="Most Miles / Trip" value={`${aggregated.maxTripTotalMiles.toFixed(1)} nm (${aggregated.maxTripTotalMilesTitle}, ${aggregated.maxTripTotalMilesStartDate})`} />
-        <StatCard title="Most Sails Miles / Trip" value={`${aggregated.maxTripSailsMiles.toFixed(1)} nm (${aggregated.maxTripSailsMilesTitle}, ${aggregated.maxTripSailsMilesStartDate})`} />
-        <StatCard title="Most Miles / Day" value={`${aggregated.maxDayTotalMiles.toFixed(1)} nm (${aggregated.maxDayTotalMilesTitle}, ${aggregated.maxDayTotalMilesDate})`} />
-        <StatCard title="Most Sails Miles / Day" value={`${aggregated.maxDaySailsMiles.toFixed(1)} nm (${aggregated.maxDaySailsMilesTitle}, ${aggregated.maxDaySailsMilesDate})`} />
-      </div>
-    </>
+      <section>
+        <h2 className="text-xl font-bold text-white mb-4">Records</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <StatCard title="Most Miles / Trip" value={`${aggregated.maxTripTotalMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripTotalMilesTitle}, started ${aggregated.maxTripTotalMilesStartDate}`} />
+          <StatCard title="Most Sails Miles / Trip" value={`${aggregated.maxTripSailsMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripSailsMilesTitle}, started ${aggregated.maxTripSailsMilesStartDate}`} />
+          <StatCard title="Most Miles / Day" value={`${aggregated.maxDayTotalMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDayTotalMilesTitle}, ${aggregated.maxDayTotalMilesDate}`} />
+          <StatCard title="Most Sails Miles / Day" value={`${aggregated.maxDaySailsMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDaySailsMilesTitle}, ${aggregated.maxDaySailsMilesDate}`} />
+        </div>
+      </section>
+    </div>
   );
 };
 
