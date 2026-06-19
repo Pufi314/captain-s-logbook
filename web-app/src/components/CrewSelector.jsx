@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CrewSelector = ({ crewIndex, onSelect }) => {
+const CrewSelector = ({ crewIndex, value, onSelect }) => {
   const names = Array.from(crewIndex.keys()).sort((a, b) => a.localeCompare(b, 'cs'));
 
   return (
@@ -8,6 +8,7 @@ const CrewSelector = ({ crewIndex, onSelect }) => {
       <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Crew Member to View Their Trips:</h2>
       <select
         className="w-full p-2 mb-4 border rounded"
+        value={value}
         onChange={(e) => onSelect(e.target.value || null)}
       >
         <option value="">Select a crew member</option>

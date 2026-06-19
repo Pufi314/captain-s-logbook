@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CitySelector = ({ cityIndex, onSelect }) => {
+const CitySelector = ({ cityIndex, value, onSelect }) => {
   const cities = Array.from(cityIndex.keys()).sort();
 
   return (
@@ -8,6 +8,7 @@ const CitySelector = ({ cityIndex, onSelect }) => {
       <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a City to View Crew & Visits:</h2>
       <select
         className="w-full p-2 mb-4 border rounded"
+        value={value}
         onChange={(e) => {
           const city = e.target.value;
           onSelect(city || null);

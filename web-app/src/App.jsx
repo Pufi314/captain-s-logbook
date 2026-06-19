@@ -42,7 +42,7 @@ function App() {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
-            <TripSelector trips={trips} onSelect={setSelectedTrip} />
+            <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={setSelectedTrip} />
           </div>
           {selectedTrip && (
             <div className="border-t pt-4">
@@ -52,7 +52,7 @@ function App() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
-          <CitySelector cityIndex={cityIndex} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
+          <CitySelector cityIndex={cityIndex} value={selectedCity ? selectedCity.name : ''} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
           {selectedCity && (
             <div className="border-t pt-4">
               <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />
@@ -61,7 +61,7 @@ function App() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
-          <CrewSelector crewIndex={crewIndex} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
+          <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
           {selectedCrew && (
             <div className="border-t pt-4">
               <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} />

@@ -1,9 +1,10 @@
 import React from 'react';
 
-const TripSelector = ({ trips, onSelect }) => {
+const TripSelector = ({ trips, value, onSelect }) => {
   return (
     <select 
       className="w-full p-2 mb-4 border rounded"
+      value={value}
       onChange={(e) => onSelect(trips[e.target.value])}
     >
       <option value="">Select a trip</option>
