@@ -7,6 +7,24 @@ const parseTimeToMinutes = (timeStr) => {
   return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
 };
 
+const splitCSVLine = (line) => {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (const char of line) {
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  result.push(current.trim());
+  return result;
+};
+
 export const parseLogFile = (csvText) => {
   const lines = csvText.split('\n');
   let section = null;
@@ -34,9 +52,9 @@ export const parseLogFile = (csvText) => {
       }
     } else if (section === 'DAILY_LOGS') {
       if (headers.length === 0) {
-        headers = line.split(',');
+        headers = splitCSVLine(line);
       } else {
-        const values = line.split(',');
+        const values = splitCSVLine(line);
         const log = {};
         headers.forEach((h, i) => {
           log[h] = values[i];
@@ -112,4 +130,30 @@ export const aggregateStats = (trips) => {
     maxDayTotalMiles: 0, maxDayTotalMilesDate: '', maxDayTotalMilesTitle: '',
     maxDaySailsMiles: 0, maxDaySailsMilesDate: '', maxDaySailsMilesTitle: ''
   });
+};
+
+export const buildCityIndex = (trips) => {
+  const cityMap = new Map();
+
+  for (const trip of trips) {
+    const crew = trip.metadata.crew || [];
+    for (const log of trip.dailyLogs) {
+      const city = log.overnightCity;
+      if (!city) continue;
+
+      if (!cityMap.has(city)) {
+        cityMap.set(city, { entries: [], crew: new Set() });
+      }
+      const entry = cityMap.get(city);
+      entry.entries.push({ date: log.date, tripTitle: trip.metadata.title });
+      crew.forEach(name => entry.crew.add(name));
+    }
+  }
+
+  // Sort entries within each city by date
+  for (const data of cityMap.values()) {
+    data.entries.sort((a, b) => a.date.localeCompare(b.date));
+  }
+
+  return cityMap;
 };

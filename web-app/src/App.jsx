@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
-import { parseLogFile } from './utils/logProcessor';
+import { useState, useEffect, useMemo } from 'react';
+import { parseLogFile, buildCityIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
 import TripSelector from './components/TripSelector';
+import CitySelector from './components/CitySelector';
+import CityDetail from './components/CityDetail';
 import { Compass } from 'lucide-react';
 import bgImage from './assets/20240719_112113.jpg';
 
 function App() {
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
+  const cityIndex = useMemo(() => buildCityIndex(trips), [trips]);
 
   useEffect(() => {
     fetch('/data/data-index.json')
@@ -37,6 +41,9 @@ function App() {
         </div>
 
         {selectedTrip && <TripDetail trip={selectedTrip} onClose={() => setSelectedTrip(null)} />}
+
+        <CitySelector cityIndex={cityIndex} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
+        {selectedCity && <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />}
       </main>
     </div>
   );

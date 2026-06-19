@@ -56,10 +56,22 @@
 - Styled header, hover row highlighting, row dividers
 - Full CSV data visible — no fields hidden
 
+## City Selector
+- Separate white card below TripSelector
+- Dropdown with all overnight cities, sorted alphabetically
+- "Select a City to View Crew & Visits:" heading
+
+## City Detail
+- White card with close (X) button
+- **Header:** city name with MapPin icon
+- **Visits:** each entry as `date — tripTitle`, sorted chronologically
+- **Crew:** unique crew names in pill badges (alphabetically sorted); "No crew data" fallback
+- People scope: only crew (from metadata.crew), deduplicated across all trips
+
 ## Styling & CSS
 - Tailwind CSS v4 via single `@import "tailwindcss"`
 - Card-based design: white bg, shadow, rounded corners, gray border
-- lucide-react icons throughout (Compass, Clock, Ship, Anchor, MapPin, Calendar, User, DollarSign, X)
+- lucide-react icons throughout (Compass, Clock, Ship, Anchor, MapPin, Calendar, User, DollarSign, X, MapPin, Users)
 
 ## Responsive Design
 - Mobile-first layout
@@ -72,6 +84,7 @@
 - Crew/captains list parsing (quoted, semicolon-delimited)
 - Time string to minutes converter (`"H:MM"` → number)
 - `aggregateStats` reducer computing 14 cumulative and record metrics
+- `buildCityIndex` — builds map of overnight cities with visit dates and unique crew per city
 - City visit frequency tracking
 - Mooring type counting (anchor vs. buoy)
 - Division-by-zero protection in percentage calculations
