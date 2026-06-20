@@ -16,7 +16,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
   const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
     const Container = onClick ? 'button' : 'div';
     return (
-      <Container onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`}>
+      <Container onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full appearance-none [-webkit-tap-highlight-color:transparent]' : ''}`}>
         {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
