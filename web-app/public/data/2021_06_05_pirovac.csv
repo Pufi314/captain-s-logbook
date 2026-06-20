@@ -9,7 +9,7 @@ boatModel,Bavaria Cruiser 51
 yearOfManufacture,2015
 homeMarina,Pirovac
 captain,Michal Puffler
-crew,"Michal Puffler; Dominika Pufflerová; Matúš Mackovčin; Noel Mackovčin; Braňo Košík; Miro Jankovič; Michal Ferko; Andrea Ferková; Mišo Šatara; Linda Šatarová; Tomáš Rácek"
+crew,"Michal Puffler; Dominika Pufflerová; Matúš Mackovčín; Noel Mackovčín; Braňo Košík; Miro Jankovič; Michal Ferko; Andrea Ferková; Mišo Šatara; Linda Šatarová; Tomáš Rácek"
 captains,"Jano Neščivera"
 priceEur,2606
 
@@ -21,5 +21,5 @@ day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,inter
 4,2021-06-08,37.53,10:51,15.37,1:46,SV,Paklinské ostrovy,,,Marinkovač,boja
 5,2021-06-09,28.67,5:24,13.47,1:06,SZ,,,Trogir,,marína
 6,2021-06-10,36.5,8:09,15.93,1:26,SZZ,Žirje,,,Vela Stupica,boja
-7,2021-06-11,27.21,5:07,16.77,1:38,S,,Pirovač,,marína
+7,2021-06-11,27.21,5:07,16.77,1:38,S,,,Pirovač,,marína
 8,2021-06-12,0.0,0:00,0.0,0:00,,,,,,

@@ -7,7 +7,7 @@ const TripSelector = ({ trips, value, onSelect }) => {
       value={value}
       onChange={(e) => onSelect(trips[e.target.value])}
     >
-      <option value="">Select a trip</option>
+      <option value="" disabled>Select a trip</option>
       {trips.map((trip, index) => (
         <option key={index} value={index}>{trip.metadata.title} ({trip.metadata.startDate})</option>
       ))}

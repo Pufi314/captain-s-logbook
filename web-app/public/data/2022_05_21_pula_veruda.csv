@@ -9,14 +9,14 @@ boatModel,Dufour 512 Grande Large
 yearOfManufacture,2017
 homeMarina,Pula - Veruda
 captain,Michal Puffler
-crew,"Michal Puffler; Dominika Pufflerová; Dano Végh; Tomáš Rácek; Braňo Košík; Mary; Andrea Ferková; Michal Ferko; Noel Mackovčin; Miro Jankovič; Matúš Mackovčin"
+crew,"Michal Puffler; Dominika Pufflerová; Dano Végh; Tomáš Rácek; Braňo Košík; Mary; Andrea Ferková; Michal Ferko; Noel Mackovčín; Miro Jankovič; Matúš Mackovčín"
 captains,"Jano Neščivera"
 priceEur,3241
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2022-05-21,0.0,0:00,0.0,0:00,,,Pula - Veruda,,marína
-2,2022-05-22,39.42,7:34,5.79,1:14,JV,kupanie Susak,Lošinj,,,Krivica,boja
+1,2022-05-21,0.0,0:00,0.0,0:00,,,,Pula - Veruda,,marína
+2,2022-05-22,39.42,7:34,5.79,1:14,JV,kupanie Susak,Lošinj,,Krivica,boja
 3,2022-05-23,27.92,6:28,9.33,2:12,SV,kupanie Ilovik,Ráb,Ráb,,marína
 4,2022-05-24,17.98,3:43,15.28,2:30,S,,Goli,,Melna,molo
 5,2022-05-25,35.53,6:14,0.0,0:00,JJV,,Olib,,Slatinica,boja

@@ -14,7 +14,7 @@ const CitySelector = ({ cityIndex, value, onSelect }) => {
           onSelect(city || null);
         }}
       >
-        <option value="">Select a city</option>
+        <option value="" disabled>Select a city</option>
         {cities.map(city => (
           <option key={city} value={city}>{city}</option>
         ))}

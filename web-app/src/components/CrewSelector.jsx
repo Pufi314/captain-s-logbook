@@ -11,7 +11,7 @@ const CrewSelector = ({ crewIndex, value, onSelect }) => {
         value={value}
         onChange={(e) => onSelect(e.target.value || null)}
       >
-        <option value="">Select a crew member</option>
+        <option value="" disabled>Select a crew member</option>
         {names.map(name => (
           <option key={name} value={name}>{name}</option>
         ))}

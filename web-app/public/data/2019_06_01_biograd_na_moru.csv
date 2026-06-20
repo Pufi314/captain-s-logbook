@@ -9,13 +9,13 @@ boatModel,Bavaria Cruiser 37
 yearOfManufacture,2014
 homeMarina,Biograd na Moru
 captain,Michal Puffler
-crew,"Michal Puffler; Dominika Pufflerová; Miro Vincze; Katka Vincze; Dano Vegh; Andrea Ferková"
+crew,"Michal Puffler; Dominika Pufflerová; Miro Vincze; Katka Vincze; Dano Végh; Andrea Ferková"
 captains,"Jano Neščivera"
 priceEur,1340
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2019-06-01,0.0,0:00,0.0,0:00,,,Biograd na Moru,,marina
+1,2019-06-01,0.0,0:00,0.0,0:00,,,,Biograd na Moru,,marina
 2,2019-06-02,12.9,3:46,3.01,0:59,JV,,Zminjak,,,boja
 3,2019-06-03,25.7,5:29,16.05,3:13,JV,,,Primošten,,molo
 4,2019-06-04,35.42,7:18,0.0,0:00,JV,,Paklinské ostrovy,,Marinkovač,boja
