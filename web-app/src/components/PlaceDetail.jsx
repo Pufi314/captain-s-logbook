@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Users, Calendar, X } from 'lucide-react';
 
-const PlaceDetail = ({ place, data, onClose }) => {
+const PlaceDetail = ({ place, data, onClose, onTripSelect }) => {
   if (!data) return null;
 
   const sortedCrew = Array.from(data.crew).sort((a, b) => a.localeCompare(b, 'cs'));
@@ -25,9 +25,9 @@ const PlaceDetail = ({ place, data, onClose }) => {
         </div>
         <div className="space-y-1">
           {data.entries.map((entry, i) => (
-            <p key={i} className="text-sm text-gray-600 ml-7">
+            <button key={i} onClick={() => onTripSelect?.(entry.trip)} className="block text-sm text-blue-600 hover:text-blue-800 hover:underline ml-7 text-left">
               {entry.date} — {entry.tripTitle}
-            </p>
+            </button>
           ))}
         </div>
       </div>

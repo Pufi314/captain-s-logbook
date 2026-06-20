@@ -64,7 +64,7 @@
 
 ## Place Detail
 - **Header:** place name with MapPin icon + close button
-- **Overnight Stays:** each entry as `date — tripTitle`, sorted chronologically
+- **Overnight Stays:** each entry as `date — tripTitle`, sorted chronologically; clickable — opens the corresponding voyage detail with smooth scroll
 - **Crew:** unique crew names in pill badges (Czech locale sort); "No crew data" fallback
 
 ## Crew Selector
@@ -74,7 +74,7 @@
 
 ## Crew Detail
 - **Header:** crew member name with User icon + close button
-- **Trips:** each as `startDate — title`, sorted chronologically
+- **Trips:** each as `startDate — title`, sorted chronologically; clickable — opens the corresponding voyage detail with smooth scroll
 - **Overnight Cities / Bays / Islands:** unique place names in pill badges, alphabetically sorted
 
 ## Styling & CSS

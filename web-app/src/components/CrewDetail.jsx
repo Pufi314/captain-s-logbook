@@ -1,7 +1,7 @@
 import React from 'react';
 import { User, Ship, MapPin, X } from 'lucide-react';
 
-const CrewDetail = ({ name, data, onClose }) => {
+const CrewDetail = ({ name, data, onClose, onTripSelect }) => {
   if (!data) return null;
 
   const cities = Array.from(data.cities).sort((a, b) => a.localeCompare(b, 'cs'));
@@ -27,9 +27,9 @@ const CrewDetail = ({ name, data, onClose }) => {
         </div>
         <div className="space-y-1">
           {data.trips.map((trip, i) => (
-            <p key={i} className="text-sm text-gray-600 ml-7">
+            <button key={i} onClick={() => onTripSelect?.(trip.trip)} className="block text-sm text-blue-600 hover:text-blue-800 hover:underline ml-7 text-left">
               {trip.startDate} — {trip.title}
-            </p>
+            </button>
           ))}
         </div>
       </div>

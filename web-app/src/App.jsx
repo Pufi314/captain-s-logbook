@@ -16,6 +16,12 @@ function App() {
   const [placeFilter, setPlaceFilter] = useState('overnightCity');
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedCrew, setSelectedCrew] = useState(null);
+  const handleTripSelect = (trip) => {
+    setSelectedTrip(trip);
+    requestAnimationFrame(() => {
+      document.getElementById('voyage-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  };
   const placeIndex = useMemo(() => buildPlaceIndex(trips, placeFilter), [trips, placeFilter]);
   const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
@@ -40,7 +46,7 @@ function App() {
       <main className="max-w-6xl mx-auto p-4 space-y-6">
         {trips.length > 0 && <Dashboard trips={trips} />}
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="voyage-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
             <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={setSelectedTrip} />
@@ -56,7 +62,7 @@ function App() {
           <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null)} />
           {selectedPlace && (
             <div className="border-t pt-4">
-              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data} onClose={() => setSelectedPlace(null)} />
+              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} />
             </div>
           )}
         </div>
@@ -65,7 +71,7 @@ function App() {
           <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
           {selectedCrew && (
             <div className="border-t pt-4">
-              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} />
+              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} />
             </div>
           )}
         </div>

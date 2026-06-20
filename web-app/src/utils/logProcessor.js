@@ -145,7 +145,7 @@ export const buildPlaceIndex = (trips, key) => {
         map.set(place, { entries: [], crew: new Set() });
       }
       const entry = map.get(place);
-      entry.entries.push({ date: log.date, tripTitle: trip.metadata.title });
+      entry.entries.push({ date: log.date, tripTitle: trip.metadata.title, trip });
       crew.forEach(name => entry.crew.add(name));
     }
   }
@@ -176,7 +176,7 @@ export const buildCrewIndex = (trips) => {
         crewMap.set(name, { trips: [], cities: new Set(), bays: new Set(), islands: new Set() });
       }
       const entry = crewMap.get(name);
-      entry.trips.push({ startDate: trip.metadata.startDate, title: trip.metadata.title });
+      entry.trips.push({ startDate: trip.metadata.startDate, title: trip.metadata.title, trip });
       cities.forEach(c => entry.cities.add(c));
       bays.forEach(b => entry.bays.add(b));
       islands.forEach(i => entry.islands.add(i));
