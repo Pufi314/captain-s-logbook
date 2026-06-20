@@ -13,10 +13,10 @@ const Dashboard = ({ trips, onTripSelect }) => {
     .map(([city, count]) => `${city} (${count})`)
     .join(', ');
   
-  const StatCard = ({ title, value, icon: Icon, subtitle, onClick, bgClass = 'bg-white/80' }) => {
+  const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
     const Container = onClick ? 'button' : 'div';
     return (
-      <Container onClick={onClick} className={`${bgClass} p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`}>
+      <Container onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`}>
         {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
@@ -72,10 +72,10 @@ const Dashboard = ({ trips, onTripSelect }) => {
       <section>
         <h2 className="text-xl font-bold text-white mb-4">Records</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <StatCard title="Most Miles / Trip" value={`${aggregated.maxTripTotalMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripTotalMilesTitle}, started ${aggregated.maxTripTotalMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripTotalMilesTrip)} bgClass="bg-white/70" />
-          <StatCard title="Most Sails Miles / Trip" value={`${aggregated.maxTripSailsMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripSailsMilesTitle}, started ${aggregated.maxTripSailsMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripSailsMilesTrip)} bgClass="bg-white/70" />
-          <StatCard title="Most Miles / Day" value={`${aggregated.maxDayTotalMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDayTotalMilesTitle}, ${aggregated.maxDayTotalMilesDate}`} onClick={() => onTripSelect?.(aggregated.maxDayTotalMilesTrip)} bgClass="bg-white/70" />
-          <StatCard title="Most Sails Miles / Day" value={`${aggregated.maxDaySailsMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDaySailsMilesTitle}, ${aggregated.maxDaySailsMilesDate}`} onClick={() => onTripSelect?.(aggregated.maxDaySailsMilesTrip)} bgClass="bg-white/70" />
+          <StatCard title="Most Miles / Trip" value={`${aggregated.maxTripTotalMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripTotalMilesTitle}, started ${aggregated.maxTripTotalMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripTotalMilesTrip)} />
+          <StatCard title="Most Sails Miles / Trip" value={`${aggregated.maxTripSailsMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripSailsMilesTitle}, started ${aggregated.maxTripSailsMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripSailsMilesTrip)} />
+          <StatCard title="Most Miles / Day" value={`${aggregated.maxDayTotalMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDayTotalMilesTitle}, ${aggregated.maxDayTotalMilesDate}`} onClick={() => onTripSelect?.(aggregated.maxDayTotalMilesTrip)} />
+          <StatCard title="Most Sails Miles / Day" value={`${aggregated.maxDaySailsMiles.toFixed(1)} NM`} icon={MapPin} subtitle={`${aggregated.maxDaySailsMilesTitle}, ${aggregated.maxDaySailsMilesDate}`} onClick={() => onTripSelect?.(aggregated.maxDaySailsMilesTrip)} />
         </div>
       </section>
     </div>
