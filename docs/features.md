@@ -56,17 +56,16 @@
 - Styled header, hover row highlighting, row dividers
 - Full CSV data visible — no fields hidden
 
-## City Selector
-- Separate white card below TripSelector
-- Dropdown with all overnight cities, sorted alphabetically
-- "Select a City to View Crew & Visits:" heading
+## Place Selector
+- Card below TripSelector, same dropdown + detail layout
+- Filter dropdown: Island / City / Bay (default: City)
+- Main dropdown lists places filtered by the selection, sorted alphabetically
+- Heading: "Select an overnight place to View Crew & Visits:"
 
-## City Detail
-- White card with close (X) button
-- **Header:** city name with MapPin icon
-- **Visits:** each entry as `date — tripTitle`, sorted chronologically
-- **Crew:** unique crew names in pill badges (alphabetically sorted); "No crew data" fallback
-- People scope: only crew (from metadata.crew), deduplicated across all trips
+## Place Detail
+- **Header:** place name with MapPin icon + close button
+- **Overnight Stays:** each entry as `date — tripTitle`, sorted chronologically
+- **Crew:** unique crew names in pill badges (Czech locale sort); "No crew data" fallback
 
 ## Crew Selector
 - Card below City card, same dropdown + detail layout

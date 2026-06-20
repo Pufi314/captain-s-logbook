@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Users, Calendar, X } from 'lucide-react';
 
-const CityDetail = ({ city, data, onClose }) => {
+const PlaceDetail = ({ place, data, onClose }) => {
   if (!data) return null;
 
   const sortedCrew = Array.from(data.crew).sort((a, b) => a.localeCompare(b, 'cs'));
@@ -11,7 +11,7 @@ const CityDetail = ({ city, data, onClose }) => {
       <div className="flex items-center justify-between border-b pb-4 mb-6">
         <div className="flex items-center gap-3">
           <MapPin className="w-6 h-6 text-blue-700" />
-          <h2 className="text-2xl font-bold text-gray-800">{city}</h2>
+          <h2 className="text-2xl font-bold text-gray-800">{place}</h2>
         </div>
         <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title="Close">
           <X className="w-5 h-5 text-gray-400" />
@@ -21,7 +21,7 @@ const CityDetail = ({ city, data, onClose }) => {
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-3">
           <Calendar className="w-5 h-5 text-gray-400" />
-          <h3 className="text-lg font-semibold text-gray-700">Visits</h3>
+          <h3 className="text-lg font-semibold text-gray-700">Overnight Stays</h3>
         </div>
         <div className="space-y-1">
           {data.entries.map((entry, i) => (
@@ -55,4 +55,4 @@ const CityDetail = ({ city, data, onClose }) => {
   );
 };
 
-export default CityDetail;
+export default PlaceDetail;

@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
-import { parseLogFile, buildCityIndex, buildCrewIndex } from './utils/logProcessor';
+import { parseLogFile, buildPlaceIndex, buildCrewIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
 import TripSelector from './components/TripSelector';
-import CitySelector from './components/CitySelector';
-import CityDetail from './components/CityDetail';
+import PlaceSelector from './components/PlaceSelector';
+import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
 import { Compass } from 'lucide-react';
@@ -13,9 +13,10 @@ import bgImage from './assets/20240719_112113.jpg';
 function App() {
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [placeFilter, setPlaceFilter] = useState('overnightCity');
+  const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedCrew, setSelectedCrew] = useState(null);
-  const cityIndex = useMemo(() => buildCityIndex(trips), [trips]);
+  const placeIndex = useMemo(() => buildPlaceIndex(trips, placeFilter), [trips, placeFilter]);
   const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
   useEffect(() => {
@@ -52,10 +53,10 @@ function App() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
-          <CitySelector cityIndex={cityIndex} value={selectedCity ? selectedCity.name : ''} onSelect={(name) => setSelectedCity(name ? { name, data: cityIndex.get(name) } : null)} />
-          {selectedCity && (
+          <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null)} />
+          {selectedPlace && (
             <div className="border-t pt-4">
-              <CityDetail city={selectedCity.name} data={selectedCity.data} onClose={() => setSelectedCity(null)} />
+              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data} onClose={() => setSelectedPlace(null)} />
             </div>
           )}
         </div>

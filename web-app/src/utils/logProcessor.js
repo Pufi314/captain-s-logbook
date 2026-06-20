@@ -132,30 +132,29 @@ export const aggregateStats = (trips) => {
   });
 };
 
-export const buildCityIndex = (trips) => {
-  const cityMap = new Map();
+export const buildPlaceIndex = (trips, key) => {
+  const map = new Map();
 
   for (const trip of trips) {
     const crew = trip.metadata.crew || [];
     for (const log of trip.dailyLogs) {
-      const city = log.overnightCity;
-      if (!city) continue;
+      const place = log[key];
+      if (!place) continue;
 
-      if (!cityMap.has(city)) {
-        cityMap.set(city, { entries: [], crew: new Set() });
+      if (!map.has(place)) {
+        map.set(place, { entries: [], crew: new Set() });
       }
-      const entry = cityMap.get(city);
+      const entry = map.get(place);
       entry.entries.push({ date: log.date, tripTitle: trip.metadata.title });
       crew.forEach(name => entry.crew.add(name));
     }
   }
 
-  // Sort entries within each city by date
-  for (const data of cityMap.values()) {
+  for (const data of map.values()) {
     data.entries.sort((a, b) => a.date.localeCompare(b.date));
   }
 
-  return cityMap;
+  return map;
 };
 
 export const buildCrewIndex = (trips) => {
