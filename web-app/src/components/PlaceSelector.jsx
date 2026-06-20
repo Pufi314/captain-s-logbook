@@ -11,10 +11,10 @@ const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect 
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-3">
-        <h2 className="text-lg font-semibold text-gray-700">Select an overnight place to View Crew & Visits:</h2>
+      <h2 className="text-lg font-semibold text-gray-700 mb-3">
+        Select an overnight place to View Crew & Visits:
         <select
-          className="p-1 border rounded text-sm"
+          className="ml-1 p-1 border rounded text-sm align-middle"
           value={filterKey}
           onChange={(e) => onFilterChange(e.target.value)}
         >
@@ -22,7 +22,7 @@ const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect 
             <option key={opt.key} value={opt.key}>{opt.label}</option>
           ))}
         </select>
-      </div>
+      </h2>
       <select
         className="w-full p-2 mb-4 border rounded"
         value={value}
