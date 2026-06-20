@@ -16,7 +16,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
   const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
     const Container = onClick ? 'button' : 'div';
     return (
-      <Container onClick={onClick} className={`bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`}>
+      <Container onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`}>
         {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
@@ -34,7 +34,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard title="Total Miles" value={aggregated.totalMiles.toFixed(1) + ' NM'} icon={Compass} />
           <StatCard title="Total Hours" value={(aggregated.totalMinutes / 60).toFixed(1) + ' h'} icon={Clock} />
-          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Ship className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Miles</h3>
@@ -42,7 +42,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-sm text-gray-500">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
             </div>
           </div>
-          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Clock className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Hours</h3>
@@ -50,7 +50,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-sm text-gray-500">{(aggregated.sailsMinutes / 60).toFixed(1)} h / {(aggregated.totalMinutes / 60).toFixed(1)} h</p>
             </div>
           </div>
-          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Anchor/Buoy %</h3>
@@ -58,7 +58,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-lg font-bold">Buoy: {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
             </div>
           </div>
-          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><LifeBuoy className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Trips</h3>

@@ -59,7 +59,7 @@ function App() {
       <main className="max-w-6xl mx-auto p-4 space-y-6">
         {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} />}
 
-        <div id="voyage-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="voyage-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
             <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={setSelectedTrip} />
@@ -71,7 +71,7 @@ function App() {
           )}
         </div>
 
-        <div id="place-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="place-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null)} />
           {selectedPlace && (
             <div className="border-t pt-4">
@@ -80,7 +80,7 @@ function App() {
           )}
         </div>
 
-        <div id="crew-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="crew-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
           {selectedCrew && (
             <div className="border-t pt-4">
