@@ -17,9 +17,11 @@
 - **Total Miles** in nautical miles (1 decimal)
 - **Total Hours** (computed from minutes, 1 decimal)
 - **Sails Miles %** — percentage of distance under sail
+- **Sails Hours %** — percentage of time under sail
 - **Anchor/Buoy %** — percentage of overnight moorings by type
+- **Trips** — total number of trips + count where Michal Puffler is captain
 - StatCard component: icon in blue circle, uppercase label, bold value
-- Responsive grid: 1 col (mobile) → 2 col (tablet) → 4 col (desktop)
+- Responsive grid: 1 col (mobile) → 2 col (tablet) → 3 col (desktop)
 
 ## Dashboard — Records Section
 - Record cards show mileage value + trip/date subtitle inside the same tile
@@ -27,6 +29,7 @@
 - **Most Sails Miles / Trip** (with trip title + start date)
 - **Most Miles / Day** (with trip title + date)
 - **Most Sails Miles / Day** (with trip title + date)
+- Record tiles are clickable — open the corresponding voyage detail with smooth scroll
 - Responsive grid: 1 col (mobile) → 2 col (desktop)
 
 ## Trip Selector
@@ -65,7 +68,7 @@
 ## Place Detail
 - **Header:** place name with MapPin icon + close button
 - **Overnight Stays:** each entry as `date — tripTitle`, sorted chronologically; clickable — opens the corresponding voyage detail with smooth scroll
-- **Crew:** unique crew names in pill badges (Czech locale sort); "No crew data" fallback
+- **Crew:** unique crew names in pill badges (Czech locale sort); "No crew data" fallback; pills are clickable — open the corresponding crew detail with smooth scroll
 
 ## Crew Selector
 - Card below City card, same dropdown + detail layout
@@ -75,7 +78,7 @@
 ## Crew Detail
 - **Header:** crew member name with User icon + close button
 - **Trips:** each as `startDate — title`, sorted chronologically; clickable — opens the corresponding voyage detail with smooth scroll
-- **Overnight Cities / Bays / Islands:** unique place names in pill badges, alphabetically sorted
+- **Overnight Cities / Bays / Islands:** unique place names in pill badges, alphabetically sorted; pills are clickable — open the corresponding place detail in the place selector with the correct filter
 
 ## Styling & CSS
 - Tailwind CSS v4 via single `@import "tailwindcss"`

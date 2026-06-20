@@ -89,11 +89,13 @@ export const aggregateStats = (trips) => {
         acc.maxDayTotalMiles = log.totalDistanceNm;
         acc.maxDayTotalMilesDate = log.date;
         acc.maxDayTotalMilesTitle = trip.metadata.title;
+        acc.maxDayTotalMilesTrip = trip;
       }
       if (log.sailsDistanceNm > acc.maxDaySailsMiles) {
         acc.maxDaySailsMiles = log.sailsDistanceNm;
         acc.maxDaySailsMilesDate = log.date;
         acc.maxDaySailsMilesTitle = trip.metadata.title;
+        acc.maxDaySailsMilesTrip = trip;
       }
       
       tripTotalMiles += log.totalDistanceNm;
@@ -114,21 +116,23 @@ export const aggregateStats = (trips) => {
       acc.maxTripTotalMiles = tripTotalMiles;
       acc.maxTripTotalMilesTitle = trip.metadata.title;
       acc.maxTripTotalMilesStartDate = trip.metadata.startDate;
+      acc.maxTripTotalMilesTrip = trip;
     }
     if (tripSailsMiles > acc.maxTripSailsMiles) {
       acc.maxTripSailsMiles = tripSailsMiles;
       acc.maxTripSailsMilesTitle = trip.metadata.title;
       acc.maxTripSailsMilesStartDate = trip.metadata.startDate;
+      acc.maxTripSailsMilesTrip = trip;
     }
     
     return acc;
   }, { 
     totalMiles: 0, totalMinutes: 0, sailsMiles: 0, sailsMinutes: 0,
     cities: {}, kotvaCount: 0, bojaCount: 0, totalOvernights: 0,
-    maxTripTotalMiles: 0, maxTripTotalMilesTitle: '', maxTripTotalMilesStartDate: '',
-    maxTripSailsMiles: 0, maxTripSailsMilesTitle: '', maxTripSailsMilesStartDate: '',
-    maxDayTotalMiles: 0, maxDayTotalMilesDate: '', maxDayTotalMilesTitle: '',
-    maxDaySailsMiles: 0, maxDaySailsMilesDate: '', maxDaySailsMilesTitle: ''
+    maxTripTotalMiles: 0, maxTripTotalMilesTitle: '', maxTripTotalMilesStartDate: '', maxTripTotalMilesTrip: null,
+    maxTripSailsMiles: 0, maxTripSailsMilesTitle: '', maxTripSailsMilesStartDate: '', maxTripSailsMilesTrip: null,
+    maxDayTotalMiles: 0, maxDayTotalMilesDate: '', maxDayTotalMilesTitle: '', maxDayTotalMilesTrip: null,
+    maxDaySailsMiles: 0, maxDaySailsMilesDate: '', maxDaySailsMilesTitle: '', maxDaySailsMilesTrip: null
   });
 };
 

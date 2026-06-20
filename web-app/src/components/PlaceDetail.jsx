@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Users, Calendar, X } from 'lucide-react';
 
-const PlaceDetail = ({ place, data, onClose, onTripSelect }) => {
+const PlaceDetail = ({ place, data, onClose, onTripSelect, onCrewSelect }) => {
   if (!data) return null;
 
   const sortedCrew = Array.from(data.crew).sort((a, b) => a.localeCompare(b, 'cs'));
@@ -41,9 +41,9 @@ const PlaceDetail = ({ place, data, onClose, onTripSelect }) => {
           {sortedCrew.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {sortedCrew.map((name, i) => (
-                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                <button key={i} onClick={() => onCrewSelect?.(name)} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 cursor-pointer">
                   {name}
-                </span>
+                </button>
               ))}
             </div>
           ) : (

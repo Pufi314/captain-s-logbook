@@ -1,7 +1,7 @@
 import React from 'react';
 import { User, Ship, MapPin, X } from 'lucide-react';
 
-const CrewDetail = ({ name, data, onClose, onTripSelect }) => {
+const CrewDetail = ({ name, data, onClose, onTripSelect, onPlaceSelect }) => {
   if (!data) return null;
 
   const cities = Array.from(data.cities).sort((a, b) => a.localeCompare(b, 'cs'));
@@ -43,9 +43,9 @@ const CrewDetail = ({ name, data, onClose, onTripSelect }) => {
           {cities.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {cities.map((city, i) => (
-                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                <button key={i} onClick={() => onPlaceSelect?.(city, 'overnightCity')} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 cursor-pointer">
                   {city}
-                </span>
+                </button>
               ))}
             </div>
           ) : (
@@ -63,9 +63,9 @@ const CrewDetail = ({ name, data, onClose, onTripSelect }) => {
           {bays.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {bays.map((bay, i) => (
-                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                <button key={i} onClick={() => onPlaceSelect?.(bay, 'overnightBay')} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 cursor-pointer">
                   {bay}
-                </span>
+                </button>
               ))}
             </div>
           ) : (
@@ -83,9 +83,9 @@ const CrewDetail = ({ name, data, onClose, onTripSelect }) => {
           {islands.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {islands.map((island, i) => (
-                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                <button key={i} onClick={() => onPlaceSelect?.(island, 'overnightIsland')} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 cursor-pointer">
                   {island}
-                </span>
+                </button>
               ))}
             </div>
           ) : (

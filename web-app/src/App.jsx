@@ -22,6 +22,19 @@ function App() {
       document.getElementById('voyage-section')?.scrollIntoView({ behavior: 'smooth' });
     });
   };
+  const handlePlaceSelect = (name, filterKey) => {
+    setPlaceFilter(filterKey);
+    setSelectedPlace({ name, data: null });
+    requestAnimationFrame(() => {
+      document.getElementById('place-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  };
+  const handleCrewSelect = (name) => {
+    setSelectedCrew({ name, data: crewIndex.get(name) });
+    requestAnimationFrame(() => {
+      document.getElementById('crew-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  };
   const placeIndex = useMemo(() => buildPlaceIndex(trips, placeFilter), [trips, placeFilter]);
   const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
@@ -44,7 +57,7 @@ function App() {
       </header>
 
       <main className="max-w-6xl mx-auto p-4 space-y-6">
-        {trips.length > 0 && <Dashboard trips={trips} />}
+        {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} />}
 
         <div id="voyage-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
@@ -58,20 +71,20 @@ function App() {
           )}
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="place-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null)} />
           {selectedPlace && (
             <div className="border-t pt-4">
-              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} />
+              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data || placeIndex.get(selectedPlace.name)} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} onCrewSelect={handleCrewSelect} />
             </div>
           )}
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div id="crew-section" className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
           {selectedCrew && (
             <div className="border-t pt-4">
-              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} />
+              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} onPlaceSelect={handlePlaceSelect} />
             </div>
           )}
         </div>
