@@ -14,16 +14,15 @@ const Dashboard = ({ trips, onTripSelect }) => {
     .join(', ');
   
   const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
-    const Container = onClick ? 'button' : 'div';
     return (
-      <Container onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full appearance-none [-webkit-tap-highlight-color:transparent]' : ''}`}>
+      <div onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(e); } } : {})}>
         {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
           <p className="text-2xl font-bold text-gray-800">{value}</p>
           {subtitle && <p className="text-sm text-gray-500 mt-1">{subtitle}</p>}
         </div>
-      </Container>
+      </div>
     );
   };
 
