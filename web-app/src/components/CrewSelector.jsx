@@ -5,7 +5,7 @@ const CrewSelector = ({ crewIndex, value, onSelect }) => {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Crew Member to View Their Trips:</h2>
+      <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Crew Member</h2>
       <select
         className="w-full p-2 mb-4 border rounded"
         value={value}

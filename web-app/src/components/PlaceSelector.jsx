@@ -12,7 +12,7 @@ const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect 
   return (
     <div>
       <h2 className="text-lg font-semibold text-gray-700 mb-3">
-        Select an overnight place to View Crew & Visits:
+        Select a Place
         <select
           className="ml-1 p-1 border rounded text-sm align-middle"
           value={filterKey}

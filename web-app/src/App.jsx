@@ -59,9 +59,13 @@ function App() {
       <main className="max-w-6xl mx-auto p-4 space-y-6">
         {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} />}
 
+        <section>
+          <h2 className="text-xl font-bold text-white mb-4">Explore</h2>
+          <div className="space-y-4">
+
         <div id="voyage-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
-            <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage to View Logbook Details:</h2>
+            <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage</h2>
             <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={setSelectedTrip} />
           </div>
           {selectedTrip && (
@@ -88,6 +92,8 @@ function App() {
             </div>
           )}
         </div>
+        </div>
+        </section>
       </main>
     </div>
   );
