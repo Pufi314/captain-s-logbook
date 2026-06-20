@@ -1,12 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="42" fill="none" stroke="#5C2E0B" stroke-width="14"/>
-  <circle cx="50" cy="50" r="42" fill="none" stroke="#7A3D12" stroke-width="6"/>
-  <line x1="50" y1="16" x2="50" y2="84" stroke="#5C2E0B" stroke-width="7"/>
-  <line x1="16" y1="50" x2="84" y2="50" stroke="#5C2E0B" stroke-width="7"/>
-  <rect x="45" y="6" width="10" height="14" rx="3" fill="#5C2E0B"/>
-  <rect x="45" y="80" width="10" height="14" rx="3" fill="#5C2E0B"/>
-  <rect x="6" y="45" width="14" height="10" rx="3" fill="#5C2E0B"/>
-  <rect x="80" y="45" width="14" height="10" rx="3" fill="#5C2E0B"/>
-  <circle cx="50" cy="50" r="12" fill="#5C2E0B"/>
-  <circle cx="50" cy="50" r="7" fill="#8B5A2B"/>
+  <defs>
+    <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D2691E"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </radialGradient>
+    <radialGradient id="handle" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </radialGradient>
+    <linearGradient id="spoke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="50%" stop-color="#A0522D"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#8B4513" stroke-width="5"/>
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#A0522D" stroke-width="2.5"/>
+  <!-- Inner ring -->
+  <circle cx="50" cy="50" r="38" fill="none" stroke="#8B4513" stroke-width="2"/>
+  <!-- Spokes (6 spokes at 0, 60, 120, 180, 240, 300 degrees) -->
+  <line x1="50" y1="14" x2="50" y2="86" stroke="url(#spoke)" stroke-width="4"/>
+  <line x1="14" y1="50" x2="86" y2="50" stroke="url(#spoke)" stroke-width="4"/>
+  <line x1="18.8" y1="18.8" x2="81.2" y2="81.2" stroke="url(#spoke)" stroke-width="4"/>
+  <line x1="81.2" y1="18.8" x2="18.8" y2="81.2" stroke="url(#spoke)" stroke-width="4"/>
+  <!-- Handle knobs at spoke ends (6 positions on the outer ring) -->
+  <circle cx="50" cy="9" r="5" fill="url(#handle)"/>
+  <circle cx="50" cy="91" r="5" fill="url(#handle)"/>
+  <circle cx="9" cy="50" r="5" fill="url(#handle)"/>
+  <circle cx="91" cy="50" r="5" fill="url(#handle)"/>
+  <circle cx="13.6" cy="13.6" r="5" fill="url(#handle)"/>
+  <circle cx="86.4" cy="86.4" r="5" fill="url(#handle)"/>
+  <circle cx="86.4" cy="13.6" r="5" fill="url(#handle)"/>
+  <circle cx="13.6" cy="86.4" r="5" fill="url(#handle)"/>
+  <!-- Central hub -->
+  <circle cx="50" cy="50" r="12" fill="url(#hub)"/>
+  <circle cx="50" cy="50" r="10" fill="none" stroke="#D2691E" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="4" fill="#5C2E0B"/>
+  <circle cx="50" cy="50" r="2" fill="#DEB887"/>
 </svg>
