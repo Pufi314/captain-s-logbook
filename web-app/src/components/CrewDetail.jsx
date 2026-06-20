@@ -5,6 +5,8 @@ const CrewDetail = ({ name, data, onClose }) => {
   if (!data) return null;
 
   const cities = Array.from(data.cities).sort((a, b) => a.localeCompare(b, 'cs'));
+  const bays = Array.from(data.bays).sort((a, b) => a.localeCompare(b, 'cs'));
+  const islands = Array.from(data.islands).sort((a, b) => a.localeCompare(b, 'cs'));
 
   return (
     <div>
@@ -48,6 +50,46 @@ const CrewDetail = ({ name, data, onClose }) => {
             </div>
           ) : (
             <p className="text-sm text-gray-500">No city data</p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center gap-2 mb-3">
+          <MapPin className="w-5 h-5 text-gray-400" />
+          <h3 className="text-lg font-semibold text-gray-700">Overnight Bays</h3>
+        </div>
+        <div className="ml-7">
+          {bays.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {bays.map((bay, i) => (
+                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                  {bay}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">No bay data</p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-center gap-2 mb-3">
+          <MapPin className="w-5 h-5 text-gray-400" />
+          <h3 className="text-lg font-semibold text-gray-700">Overnight Islands</h3>
+        </div>
+        <div className="ml-7">
+          {islands.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {islands.map((island, i) => (
+                <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm">
+                  {island}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">No island data</p>
           )}
         </div>
       </div>

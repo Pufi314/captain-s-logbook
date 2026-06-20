@@ -163,17 +163,23 @@ export const buildCrewIndex = (trips) => {
   for (const trip of trips) {
     const crew = trip.metadata.crew || [];
     const cities = new Set();
+    const bays = new Set();
+    const islands = new Set();
     for (const log of trip.dailyLogs) {
       if (log.overnightCity) cities.add(log.overnightCity);
+      if (log.overnightBay) bays.add(log.overnightBay);
+      if (log.overnightIsland) islands.add(log.overnightIsland);
     }
 
     for (const name of crew) {
       if (!crewMap.has(name)) {
-        crewMap.set(name, { trips: [], cities: new Set() });
+        crewMap.set(name, { trips: [], cities: new Set(), bays: new Set(), islands: new Set() });
       }
       const entry = crewMap.get(name);
       entry.trips.push({ startDate: trip.metadata.startDate, title: trip.metadata.title });
       cities.forEach(c => entry.cities.add(c));
+      bays.forEach(b => entry.bays.add(b));
+      islands.forEach(i => entry.islands.add(i));
     }
   }
 

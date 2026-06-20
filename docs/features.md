@@ -75,7 +75,7 @@
 ## Crew Detail
 - **Header:** crew member name with User icon + close button
 - **Trips:** each as `startDate — title`, sorted chronologically
-- **Overnight Cities:** unique city names in pill badges, alphabetically sorted
+- **Overnight Cities / Bays / Islands:** unique place names in pill badges, alphabetically sorted
 
 ## Styling & CSS
 - Tailwind CSS v4 via single `@import "tailwindcss"`
