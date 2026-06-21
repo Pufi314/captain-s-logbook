@@ -1,10 +1,54 @@
-import React from 'react';
-import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp } from 'lucide-react';
+
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const TripDetail = ({ trip, onClose }) => {
   if (!trip) return null;
 
   const { metadata, dailyLogs } = trip;
+  const [expandedRowIndex, setExpandedRowIndex] = useState(null);
+
+  const toggleRow = (index) => {
+    setExpandedRowIndex(expandedRowIndex === index ? null : index);
+  };
+
+  const MapRow = ({ log }) => {
+    const parts = log.location?.split(',');
+    const lat = parseFloat(parts?.[0]);
+    const lng = parseFloat(parts?.[1]);
+    if (isNaN(lat) || isNaN(lng)) return null;
+
+    return (
+      <tr>
+        <td colSpan="12" className="p-0">
+          <div className="h-[300px] w-full rounded-b-lg overflow-hidden border-t">
+            <MapContainer center={[lat, lng]} zoom={14} className="h-full w-full" scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[lat, lng]}>
+                <Popup>{log.location}</Popup>
+              </Marker>
+            </MapContainer>
+          </div>
+        </td>
+      </tr>
+    );
+  };
 
   const InfoItem = ({ icon: Icon, label, value }) => (
     <div className="flex items-center gap-3">
@@ -57,22 +101,34 @@ const TripDetail = ({ trip, onClose }) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {dailyLogs.map((log, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="p-3 text-gray-600">{log.day}</td>
-                <td className="p-3 text-gray-600">{log.date}</td>
-                <td className="p-3 text-gray-600">{log.totalDistanceNm}</td>
-                <td className="p-3 text-gray-600">{log.totalTime}</td>
-                <td className="p-3 text-gray-600">{log.sailsDistanceNm}</td>
-                <td className="p-3 text-gray-600">{log.sailsTime}</td>
-                <td className="p-3 text-gray-600">{log.sailDirection}</td>
-                <td className="p-3 text-gray-600">{log.interestingStops}</td>
-                <td className="p-3 text-gray-600">{log.overnightIsland}</td>
-                <td className="p-3 text-gray-600">{log.overnightCity}</td>
-                <td className="p-3 text-gray-600">{log.overnightBay}</td>
-                <td className="p-3 text-gray-600">{log.mooringType}</td>
-              </tr>
-            ))}
+            {dailyLogs.map((log, index) => {
+              const hasLocation = log.location && log.location !== 'N/A';
+              return (
+                <React.Fragment key={index}>
+                  <tr
+                    className={`${hasLocation ? 'cursor-pointer hover:bg-gray-50' : ''} ${expandedRowIndex === index ? 'bg-blue-50' : ''}`}
+                    onClick={() => hasLocation && toggleRow(index)}
+                  >
+                    <td className="p-3 text-gray-600">{log.day}
+                      {expandedRowIndex === index && <ChevronUp className="inline w-3 h-3 ml-1 text-blue-500" />}
+                      {hasLocation && expandedRowIndex !== index && <ChevronDown className="inline w-3 h-3 ml-1 text-gray-400" />}
+                    </td>
+                    <td className="p-3 text-gray-600">{log.date}</td>
+                    <td className="p-3 text-gray-600">{log.totalDistanceNm}</td>
+                    <td className="p-3 text-gray-600">{log.totalTime}</td>
+                    <td className="p-3 text-gray-600">{log.sailsDistanceNm}</td>
+                    <td className="p-3 text-gray-600">{log.sailsTime}</td>
+                    <td className="p-3 text-gray-600">{log.sailDirection}</td>
+                    <td className="p-3 text-gray-600">{log.interestingStops}</td>
+                    <td className="p-3 text-gray-600">{log.overnightIsland}</td>
+                    <td className="p-3 text-gray-600">{log.overnightCity}</td>
+                    <td className="p-3 text-gray-600">{log.overnightBay}</td>
+                    <td className="p-3 text-gray-600">{log.mooringType}</td>
+                  </tr>
+                  {expandedRowIndex === index && <MapRow log={log} />}
+                </React.Fragment>
+              );
+            })}
           </tbody>
         </table>
       </div>

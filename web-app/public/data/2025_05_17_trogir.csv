@@ -15,11 +15,11 @@ priceEur,2305
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2025-05-17,30.4,4:59,2.91,0:42,J,,Paklinské ostrovy,,Vinogradišče,bója,44.055129, 15.297856
-2,2025-05-18,18.74,3:36,0.0,0:00,JV,,Korčula,Vela Luka,,bója,44.055129, 15.297856
-3,2025-05-19,29.97,5:51,5.16,1:26,V,,Korčula,Korčula,,marína,44.055129, 15.297856
-4,2025-05-20,43.95,7:31,20.66,3:54,SZ,,Hvar,Vrboska,,marína,44.055129, 15.297856
-5,2025-05-21,0.0,0:00,0.0,0:00,,,Hvar,Vrboska,,marína,44.055129, 15.297856
-6,2025-05-22,28.56,6:31,10.08,3:06,SZ,,Šolta,,Šešula,bója,44.055129, 15.297856
-7,2025-05-23,9.34,1:49,0.0,0:00,SZ,,,Trogir,,marína,44.055129, 15.297856
+1,2025-05-17,30.4,4:59,2.91,0:42,J,,Paklinské ostrovy,,Vinogradišče,bója,"44.055129, 15.297856"
+2,2025-05-18,18.74,3:36,0.0,0:00,JV,,Korčula,Vela Luka,,bója,"44.055129, 15.297856"
+3,2025-05-19,29.97,5:51,5.16,1:26,V,,Korčula,Korčula,,marína,"44.055129, 15.297856"
+4,2025-05-20,43.95,7:31,20.66,3:54,SZ,,Hvar,Vrboska,,marína,"44.055129, 15.297856"
+5,2025-05-21,0.0,0:00,0.0,0:00,,,Hvar,Vrboska,,marína,"44.055129, 15.297856"
+6,2025-05-22,28.56,6:31,10.08,3:06,SZ,,Šolta,,Šešula,bója,"44.055129, 15.297856"
+7,2025-05-23,9.34,1:49,0.0,0:00,SZ,,,Trogir,,marína,"44.055129, 15.297856"
 8,2025-05-24,0.0,0:00,0.0,0:00,,,,,,,N/A

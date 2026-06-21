@@ -44,10 +44,10 @@ priceEur,2556
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2017-09-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,44.055129, 15.297856
-2,2017-09-10,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,44.055129, 15.297856
-3,2017-09-11,13.42,2:26,0.0,0:00,,,,Sukoshan,,marina,44.055129, 15.297856
-4,2017-09-12,37.0,6:43,15.64,3:21,JV,,Žirje,,Mala Stupica,boja,44.055129, 15.297856
+1,2017-09-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
+2,2017-09-10,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
+3,2017-09-11,13.42,2:26,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
+4,2017-09-12,37.0,6:43,15.64,3:21,JV,,Žirje,,Mala Stupica,boja,"44.055129, 15.297856"
 ```
 
 ---
@@ -91,7 +91,7 @@ This section begins with the `# DAILY LOGS` comment and a header row, followed b
 | **overnightCity** | City or town where the boat stayed overnight (if applicable) | String | `Sali` |
 | **overnightBay** | Bay or anchorage where the boat stayed overnight (if applicable) | String | `Mala Stupica` |
 | **mooringType** | How the boat was moored overnight | Enum (`marina`, `boja`, `kotva`, `molo`) | `boja` |
-| **location** | GPS coordinates of the overnight stop | String (latitude, longitude) | `44.055129, 15.297856` |
+| **location** | GPS coordinates of the overnight stop | Quoted String ("lat, lng") | `"44.055129, 15.297856"` |
 
 ---
 

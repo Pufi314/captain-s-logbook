@@ -15,11 +15,11 @@ priceEur,0.0
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2024-07-13,28.82,5:10,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,boja,44.055129, 15.297856
-2,2024-07-14,17.06,2:48,0.0,0:00,S,,Olib,,Slatinica,boja,44.055129, 15.297856
-3,2024-07-15,26.73,4:10,0.0,0:00,SZ,,Lošinj,Mali Lošinj,,molo,44.055129, 15.297856
-4,2024-07-16,8.82,2:06,0.0,0:00,JV,,Lošinj,,Krivica,boja,44.055129, 15.297856
-5,2024-07-17,25.74,4:51,0.0,0:00,SV,,Ráb,Ráb,,marína,44.055129, 15.297856
-6,2024-07-18,24.75,3:35,0.0,0:00,J,,Olib,,Slatinica,boja,44.055129, 15.297856
-7,2024-07-19,30.48,4:54,0.0,0:00,JV,,Ugljan,Kukljica,,molo,44.055129, 15.297856
+1,2024-07-13,28.82,5:10,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,boja,"44.055129, 15.297856"
+2,2024-07-14,17.06,2:48,0.0,0:00,S,,Olib,,Slatinica,boja,"44.055129, 15.297856"
+3,2024-07-15,26.73,4:10,0.0,0:00,SZ,,Lošinj,Mali Lošinj,,molo,"44.055129, 15.297856"
+4,2024-07-16,8.82,2:06,0.0,0:00,JV,,Lošinj,,Krivica,boja,"44.055129, 15.297856"
+5,2024-07-17,25.74,4:51,0.0,0:00,SV,,Ráb,Ráb,,marína,"44.055129, 15.297856"
+6,2024-07-18,24.75,3:35,0.0,0:00,J,,Olib,,Slatinica,boja,"44.055129, 15.297856"
+7,2024-07-19,30.48,4:54,0.0,0:00,JV,,Ugljan,Kukljica,,molo,"44.055129, 15.297856"
 8,2024-07-20,2.91,0:41,0.0,0:00,SV,,,,,,N/A

@@ -15,11 +15,11 @@ priceEur,1889
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2019-08-17,13.93,2:15,0.0,0:00,JV,,Gangaro,, ,kotva,44.055129, 15.297856
-2,2019-08-18,22.3,4:06,6.65,1:10,JV,,Zlarin,Zlarin,,molo,44.055129, 15.297856
-3,2019-08-19,25.05,5:56,3.4,3:21,JV,,Drvenik Veli,,Mala Luka,kotva,44.055129, 15.297856
-4,2019-08-20,23.22,2:48,9.22,3:04,JV,,Paklinské ostrovy,,Pakleni bok,kotva,44.055129, 15.297856
-5,2019-08-21,19.0,4:22,0.0,0:00,JZ,Uvala Zakamica,,Komiža,,molo,44.055129, 15.297856
-6,2019-08-22,38.34,9:28,15.2,3:10,SSZ,Uvala Zakamica,,Primošten,,molo,44.055129, 15.297856
-7,2019-08-23,36.93,8:42,13.04,2:53,SZ,Prvič Luka,Vrgada,Vrgada,,boja,44.055129, 15.297856
+1,2019-08-17,13.93,2:15,0.0,0:00,JV,,Gangaro,, ,kotva,"44.055129, 15.297856"
+2,2019-08-18,22.3,4:06,6.65,1:10,JV,,Zlarin,Zlarin,,molo,"44.055129, 15.297856"
+3,2019-08-19,25.05,5:56,3.4,3:21,JV,,Drvenik Veli,,Mala Luka,kotva,"44.055129, 15.297856"
+4,2019-08-20,23.22,2:48,9.22,3:04,JV,,Paklinské ostrovy,,Pakleni bok,kotva,"44.055129, 15.297856"
+5,2019-08-21,19.0,4:22,0.0,0:00,JZ,Uvala Zakamica,,Komiža,,molo,"44.055129, 15.297856"
+6,2019-08-22,38.34,9:28,15.2,3:10,SSZ,Uvala Zakamica,,Primošten,,molo,"44.055129, 15.297856"
+7,2019-08-23,36.93,8:42,13.04,2:53,SZ,Prvič Luka,Vrgada,Vrgada,,boja,"44.055129, 15.297856"
 8,2019-08-24,15.98,2:45,0.0,0:00,SZ,,,,,,N/A

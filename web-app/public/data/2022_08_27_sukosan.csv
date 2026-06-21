@@ -15,11 +15,11 @@ priceEur,2747
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2022-08-27,9.94,1:44,0.0,0:00,JV,,Pašman,Kraj,,kotva,44.055129, 15.297856
-2,2022-08-28,24.62,5:10,0.0,0:00,JV,,Zlarin,Zlarin,,molo,44.055129, 15.297856
-3,2022-08-29,42.12,7:42,12.02,1:59,SZ,,Dugi Otok,,Mir,molo,44.055129, 15.297856
-4,2022-08-30,8.8,5:50,0.0,0:00,S,,Dugi Otok,Sali,,molo,44.055129, 15.297856
-5,2022-08-31,30.83,8:59,0.67,0:25,SZ,Vrak,Dugi Otok,,Sakarun,boja,44.055129, 15.297856
-6,2022-09-01,7.4,1:25,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,marína,44.055129, 15.297856
-7,2022-09-02,40.55,8:09,11.17,1:56,JV,Božava reštaurácia,Vrgada,Vrgada,,boja,44.055129, 15.297856
+1,2022-08-27,9.94,1:44,0.0,0:00,JV,,Pašman,Kraj,,kotva,"44.055129, 15.297856"
+2,2022-08-28,24.62,5:10,0.0,0:00,JV,,Zlarin,Zlarin,,molo,"44.055129, 15.297856"
+3,2022-08-29,42.12,7:42,12.02,1:59,SZ,,Dugi Otok,,Mir,molo,"44.055129, 15.297856"
+4,2022-08-30,8.8,5:50,0.0,0:00,S,,Dugi Otok,Sali,,molo,"44.055129, 15.297856"
+5,2022-08-31,30.83,8:59,0.67,0:25,SZ,Vrak,Dugi Otok,,Sakarun,boja,"44.055129, 15.297856"
+6,2022-09-01,7.4,1:25,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,marína,"44.055129, 15.297856"
+7,2022-09-02,40.55,8:09,11.17,1:56,JV,Božava reštaurácia,Vrgada,Vrgada,,boja,"44.055129, 15.297856"
 8,2022-09-03,15.55,2:46,0.0,0:00,SZ,,,,,,N/A
