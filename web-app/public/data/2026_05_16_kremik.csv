@@ -14,12 +14,12 @@ captains,"Ondrej Puffler; Jano Neščivera; Dano Šimek"
 priceEur,1550
 
 # DAILY LOGS
-day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2026-05-16,4.81,1:02,0.0,0:00,JV,,,Rogoznica,,molo
-2,2026-05-17,17.16,3:33,7.7,1:30,JV,,Šolta,Maslenica,,marína
-3,2026-05-18,27.5,4:13,0.0,0:00,SZ,,Žirje,,Vela Stupica,boja
-4,2026-05-19,20.96,3:49,0.0,0:00,SV,,,Skradin,,marína
-5,2026-05-20,11.82,2:34,0.0,0:00,SZ,,Zlarin,Zlarin,,boja
-6,2026-05-21,5.22,1:17,0.0,0:00,SZ,,,Tribunj,,molo
-7,2026-05-22,15.55,3:17,0.0,0:00,JV,,,Kremík,,marína
-8,2026-05-23,0.0,0:00,0.0,0:00,,,,,,
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2026-05-16,4.81,1:02,0.0,0:00,JV,,,Rogoznica,,molo,44.055129, 15.297856
+2,2026-05-17,17.16,3:33,7.7,1:30,JV,,Šolta,Maslenica,,marína,44.055129, 15.297856
+3,2026-05-18,27.5,4:13,0.0,0:00,SZ,,Žirje,,Vela Stupica,boja,44.055129, 15.297856
+4,2026-05-19,20.96,3:49,0.0,0:00,SV,,,Skradin,,marína,44.055129, 15.297856
+5,2026-05-20,11.82,2:34,0.0,0:00,SZ,,Zlarin,Zlarin,,boja,44.055129, 15.297856
+6,2026-05-21,5.22,1:17,0.0,0:00,SZ,,,Tribunj,,molo,44.055129, 15.297856
+7,2026-05-22,15.55,3:17,0.0,0:00,JV,,,Kremík,,marína,44.055129, 15.297856
+8,2026-05-23,0.0,0:00,0.0,0:00,,,,,,,N/A

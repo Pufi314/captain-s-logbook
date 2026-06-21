@@ -14,12 +14,12 @@ captains,"Stano Varga"
 priceEur,0.0
 
 # DAILY LOGS
-day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2022-04-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina
-2,2022-04-10,33.26,6:51,27.29,4:58,JV,,Prvič,Prvič,,molo
-3,2022-04-11,16.95,3:57,15.64,3:21,JV,,,Rogoznica,,molo
-4,2022-04-12,21.0,5:07,0.0,0:00,SZ,,Žirie,,Tratinska,boja
-5,2022-04-13,43.0,10:31,18.07,4:09,SZ,Ponorkovy bunker,Iž,Veli Iž,,marina
-6,2022-04-14,33.59,11:47,6.9,2:10,V,Muline,,Sukoshan,,marina
-7,2022-04-15,8.0,1:50,0.0,0:00,,,,Sukoshan,,marina
-8,2022-04-16,0.0,0:00,0.0,0:00,,,,,,
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2022-04-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,44.055129, 15.297856
+2,2022-04-10,33.26,6:51,27.29,4:58,JV,,Prvič,Prvič,,molo,44.055129, 15.297856
+3,2022-04-11,16.95,3:57,15.64,3:21,JV,,,Rogoznica,,molo,44.055129, 15.297856
+4,2022-04-12,21.0,5:07,0.0,0:00,SZ,,Žirie,,Tratinska,boja,44.055129, 15.297856
+5,2022-04-13,43.0,10:31,18.07,4:09,SZ,Ponorkovy bunker,Iž,Veli Iž,,marina,44.055129, 15.297856
+6,2022-04-14,33.59,11:47,6.9,2:10,V,Muline,,Sukoshan,,marina,44.055129, 15.297856
+7,2022-04-15,8.0,1:50,0.0,0:00,,,,Sukoshan,,marina,44.055129, 15.297856
+8,2022-04-16,0.0,0:00,0.0,0:00,,,,,,,N/A

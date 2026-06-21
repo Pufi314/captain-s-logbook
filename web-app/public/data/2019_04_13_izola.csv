@@ -14,8 +14,8 @@ captains,N/A
 priceEur,0.0
 
 # DAILY LOGS
-day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2019-04-13,8.8,2:12,7.02,1:03,N/A,,,Izola,,marina
-2,2019-04-14,58.86,8:42,50.95,7:02,Z,,,Benátky,,marina
-3,2019-04-15,54.54,10:02,10.87,2:06,SV,,,Grado,,molo
-4,2019-04-16,18.8,6:04,4.9,2:03,JV,,,,,,
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2019-04-13,8.8,2:12,7.02,1:03,N/A,,,Izola,,marina,44.055129, 15.297856
+2,2019-04-14,58.86,8:42,50.95,7:02,Z,,,Benátky,,marina,44.055129, 15.297856
+3,2019-04-15,54.54,10:02,10.87,2:06,SV,,,Grado,,molo,44.055129, 15.297856
+4,2019-04-16,18.8,6:04,4.9,2:03,JV,,,,,,,N/A

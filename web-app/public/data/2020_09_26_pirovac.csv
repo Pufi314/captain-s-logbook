@@ -14,12 +14,12 @@ captains,N/A
 priceEur,2268
 
 # DAILY LOGS
-day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType
-1,2020-09-26,0.0,0:00,0.0,0:00,,,,Pirovac,,marina
-2,2020-09-27,22.73,4:32,0.0,0:00,JV,,Zlarin,Zlarin,,molo
-3,2020-09-28,30.56,6:44,4.36,1:38,SZ,,Vrgada,Vrgada,,kotva
-4,2020-09-29,32.13,7:14,11.51,2:05,SZ,,Dugi Otok,Sali,,molo
-5,2020-09-30,29.1,5:35,0.53,0:11,SZ,,Dugi Otok,,Sakarun,boja
-6,2020-10-01,27.05,5:33,3.71,0:53,JV,,Dugi Otok,,Mir,boja
-7,2020-10-02,30.02,6:27,11.12,2:08,JV,,,Pirovac,,marina
-8,2020-10-03,0.0,0:00,0.0,0:00,,,,,,
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2020-09-26,0.0,0:00,0.0,0:00,,,,Pirovac,,marina,44.055129, 15.297856
+2,2020-09-27,22.73,4:32,0.0,0:00,JV,,Zlarin,Zlarin,,molo,44.055129, 15.297856
+3,2020-09-28,30.56,6:44,4.36,1:38,SZ,,Vrgada,Vrgada,,kotva,44.055129, 15.297856
+4,2020-09-29,32.13,7:14,11.51,2:05,SZ,,Dugi Otok,Sali,,molo,44.055129, 15.297856
+5,2020-09-30,29.1,5:35,0.53,0:11,SZ,,Dugi Otok,,Sakarun,boja,44.055129, 15.297856
+6,2020-10-01,27.05,5:33,3.71,0:53,JV,,Dugi Otok,,Mir,boja,44.055129, 15.297856
+7,2020-10-02,30.02,6:27,11.12,2:08,JV,,,Pirovac,,marina,44.055129, 15.297856
+8,2020-10-03,0.0,0:00,0.0,0:00,,,,,,,N/A
