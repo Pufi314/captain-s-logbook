@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp } from 'lucide-react';
@@ -21,6 +21,14 @@ const TripDetail = ({ trip, onClose }) => {
   const { metadata, dailyLogs } = trip;
   const [expandedRowIndex, setExpandedRowIndex] = useState(null);
 
+  const MapResizer = () => {
+    const map = useMap();
+    React.useEffect(() => {
+      setTimeout(() => map.invalidateSize(), 100);
+    }, []);
+    return null;
+  };
+
   const toggleRow = (index) => {
     setExpandedRowIndex(expandedRowIndex === index ? null : index);
   };
@@ -40,6 +48,7 @@ const TripDetail = ({ trip, onClose }) => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
+              <MapResizer />
               <Marker position={[lat, lng]}>
                 <Popup>{log.location}</Popup>
               </Marker>
