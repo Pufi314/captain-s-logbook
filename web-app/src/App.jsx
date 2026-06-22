@@ -79,7 +79,7 @@ function App() {
           <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => { setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null); setSelectedTrip(null); setSelectedCrew(null); }} />
           {selectedPlace && (
             <div className="border-t pt-4">
-              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data || placeIndex.get(selectedPlace.name)} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} onCrewSelect={handleCrewSelect} />
+              <PlaceDetail place={selectedPlace.name} data={selectedPlace.data || placeIndex.get(selectedPlace.name)} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} onCrewSelect={(name) => { setSelectedPlace(null); setSelectedTrip(null); handleCrewSelect(name); }} />
             </div>
           )}
         </div>
@@ -88,7 +88,7 @@ function App() {
           <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => { setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null); setSelectedTrip(null); setSelectedPlace(null); }} />
           {selectedCrew && (
             <div className="border-t pt-4">
-              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} onPlaceSelect={handlePlaceSelect} />
+              <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} onPlaceSelect={(name, filterKey) => { setSelectedCrew(null); setSelectedTrip(null); handlePlaceSelect(name, filterKey); }} />
             </div>
           )}
         </div>
