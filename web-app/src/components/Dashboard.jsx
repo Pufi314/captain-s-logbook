@@ -15,7 +15,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
   
   const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
     return (
-      <div onClick={onClick} className={`bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(e); } } : {})}>
+      <div onClick={onClick} className={`bg-white/95 p-5 rounded-lg shadow-sm border border-gray-200 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(e); } } : {})}>
         {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
@@ -29,11 +29,11 @@ const Dashboard = ({ trips, onTripSelect }) => {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">General Statistics</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">General Statistics</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard title="Total Miles" value={aggregated.totalMiles.toFixed(1) + ' NM'} icon={Compass} />
           <StatCard title="Total Hours" value={(aggregated.totalMinutes / 60).toFixed(1) + ' h'} icon={Clock} />
-          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/95 p-5 rounded-lg shadow-sm border border-gray-200 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Ship className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Miles</h3>
@@ -41,7 +41,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-sm text-gray-500">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
             </div>
           </div>
-          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/95 p-5 rounded-lg shadow-sm border border-gray-200 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Clock className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Hours</h3>
@@ -49,7 +49,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-sm text-gray-500">{(aggregated.sailsMinutes / 60).toFixed(1)} h / {(aggregated.totalMinutes / 60).toFixed(1)} h</p>
             </div>
           </div>
-          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/95 p-5 rounded-lg shadow-sm border border-gray-200 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Anchor/Buoy %</h3>
@@ -57,7 +57,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
               <p className="text-lg font-bold">Buoy: {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
             </div>
           </div>
-          <div className="bg-white/80 p-5 rounded-lg shadow-sm border border-gray-100 flex gap-4">
+          <div className="bg-white/95 p-5 rounded-lg shadow-sm border border-gray-200 flex gap-4">
             <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><LifeBuoy className="w-6 h-6" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Trips</h3>
@@ -69,7 +69,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">Records</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">Records</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <StatCard title="Most Miles / Trip" value={`${aggregated.maxTripTotalMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripTotalMilesTitle}, started ${aggregated.maxTripTotalMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripTotalMilesTrip)} />
           <StatCard title="Most Sails Miles / Trip" value={`${aggregated.maxTripSailsMiles.toFixed(1)} NM`} icon={Ship} subtitle={`${aggregated.maxTripSailsMilesTitle}, started ${aggregated.maxTripSailsMilesStartDate}`} onClick={() => onTripSelect?.(aggregated.maxTripSailsMilesTrip)} />

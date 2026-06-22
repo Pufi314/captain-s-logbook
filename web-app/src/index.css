@@ -5,6 +5,6 @@
 }
 
 html {
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./assets/20240719_112113.jpg') center/cover fixed #111;
+  background: linear-gradient(rgba(0,0,0,0.10), rgba(0,0,0,0.10)), url('./assets/20240719_112113.jpg') center/cover fixed #ddd;
   min-height: 100dvh;
 }
