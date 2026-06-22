@@ -16,7 +16,7 @@ priceEur,2305
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
 1,2025-05-17,30.4,4:59,2.91,0:42,J,,Paklinské ostrovy,,Vinogradišče,bója,"43.155204, 16.388589"
-2,2025-05-18,18.74,3:36,0.0,0:00,JV,,Korčula,Vela Luka,,bója,"42.967317, 16.700529"
+2,2025-05-18,18.74,3:36,0.0,0:00,JV,,Korčula,Vela Luka,Plitvine,bója,"42.967317, 16.700529"
 3,2025-05-19,29.97,5:51,5.16,1:26,V,,Korčula,Korčula,,marína,"42.958836, 17.136224"
 4,2025-05-20,43.95,7:31,20.66,3:54,SZ,,Hvar,Vrboska,,marína,"43.179311, 16.675939"
 5,2025-05-21,0.0,0:00,0.0,0:00,,,Hvar,Vrboska,,marína,"43.179311, 16.675939"
