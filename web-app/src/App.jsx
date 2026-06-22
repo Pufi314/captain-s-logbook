@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
-        <header className="bg-white/70 text-gray-800 md:bg-[#1a365d] md:text-white p-4 shadow-lg" style={{ colorScheme: 'only light' }}>
+        <header className="bg-[#1a365d] text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
           <h1 className="text-2xl font-bold">Captain's Logbook Dashboard</h1>
@@ -59,10 +59,10 @@ function App() {
         {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} />}
 
         <section>
-          <h2 className="text-xl font-bold text-gray-800 md:text-white mb-4">Explore</h2>
+          <h2 className="text-xl font-bold text-white mb-4">Explore</h2>
           <div className="space-y-4">
 
-        <div id="voyage-section" className="bg-white/70 md:bg-white/80 p-6 rounded-lg shadow-sm border border-gray-200 md:border-gray-100 space-y-4" style={{ colorScheme: 'only light' }}>
+        <div id="voyage-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage</h2>
             <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={(trip) => { setSelectedTrip(trip); setSelectedPlace(null); setSelectedCrew(null); }} />
@@ -74,7 +74,7 @@ function App() {
           )}
         </div>
 
-        <div id="place-section" className="bg-white/70 md:bg-white/80 p-6 rounded-lg shadow-sm border border-gray-200 md:border-gray-100 space-y-4" style={{ colorScheme: 'only light' }}>
+        <div id="place-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => { setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null); setSelectedTrip(null); setSelectedCrew(null); }} />
           {selectedPlace && (
             <div className="border-t pt-4">
@@ -83,7 +83,7 @@ function App() {
           )}
         </div>
 
-        <div id="crew-section" className="bg-white/70 md:bg-white/80 p-6 rounded-lg shadow-sm border border-gray-200 md:border-gray-100 space-y-4" style={{ colorScheme: 'only light' }}>
+        <div id="crew-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => { setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null); setSelectedTrip(null); setSelectedPlace(null); }} />
           {selectedCrew && (
             <div className="border-t pt-4">
