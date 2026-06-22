@@ -24,7 +24,11 @@ const TripDetail = ({ trip, onClose }) => {
   const MapResizer = () => {
     const map = useMap();
     React.useEffect(() => {
-      setTimeout(() => map.invalidateSize(), 100);
+      const container = map.getContainer();
+      const observer = new ResizeObserver(() => map.invalidateSize());
+      observer.observe(container);
+      map.invalidateSize();
+      return () => observer.disconnect();
     }, []);
     return null;
   };
