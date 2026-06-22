@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
 html {
-  min-height: 100dvh;
-  background-color: #111;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./assets/20240719_112113.jpg') center/cover #111;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./assets/20240719_112113.jpg') center/cover #111;
-  pointer-events: none;
+body {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: none;
 }
