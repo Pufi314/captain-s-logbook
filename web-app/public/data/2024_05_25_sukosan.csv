@@ -15,11 +15,11 @@ priceEur,2746
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2024-05-25,30.38,4:27,3.29,0:43,JV,,Kaprije,Kaprije,,boja,"44.055129, 15.297856"
-2,2024-05-26,21.95,4:11,0.0,0:00,JV,,,Rogoznica,,molo,"44.055129, 15.297856"
-3,2024-05-27,14.73,2:41,0.0,0:00,SZ,,Žirje,,Vela Stupica,boja,"44.055129, 15.297856"
-4,2024-05-28,23.56,4:03,4.34,0:55,SZ,,Kornaty,Vrulje,,boja,"44.055129, 15.297856"
-5,2024-05-29,12.08,2:13,0.5,0:21,SZ,,Dugi Otok,Sali,,molo,"44.055129, 15.297856"
-6,2024-05-30,31.85,7:18,21.0,4:28,SV,,Ugljan,Kukljica,,molo,"44.055129, 15.297856"
-7,2024-05-31,0.0,0:00,0.0,0:00,,,Ugljan,Kukljica,,molo,"44.055129, 15.297856"
+1,2024-05-25,30.38,4:27,3.29,0:43,JV,,Kaprije,Kaprije,,boja,"43.686098, 15.709161"
+2,2024-05-26,21.95,4:11,0.0,0:00,JV,,,Rogoznica,,molo,"43.525637, 15.968875"
+3,2024-05-27,14.73,2:41,0.0,0:00,SZ,,Žirje,,Vela Stupica,boja,"43.635844, 15.684130"
+4,2024-05-28,23.56,4:03,4.34,0:55,SZ,,Kornaty,Vrulje,,boja,"43.810893, 15.300542"
+5,2024-05-29,12.08,2:13,0.5,0:21,SZ,,Dugi Otok,Sali,,molo,"43.936393, 15.166285"
+6,2024-05-30,31.85,7:18,21.0,4:28,SV,,Ugljan,Kukljica,,molo,"44.034616, 15.247593"
+7,2024-05-31,0.0,0:00,0.0,0:00,,,Ugljan,Kukljica,,molo,"44.034616, 15.247593"
 8,2024-06-01,3.0,0:30,0.0,0:00,SV,,,,,,N/A

@@ -15,11 +15,11 @@ priceEur,2556
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2017-09-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
-2,2017-09-10,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
-3,2017-09-11,13.42,2:26,0.0,0:00,,,,Sukoshan,,marina,"44.055129, 15.297856"
-4,2017-09-12,37.0,6:43,15.64,3:21,JV,,Žirje,,Mala Stupica,boja,"44.055129, 15.297856"
-5,2017-09-13,32.0,5:48,0.0,0:00,SZ,,Dugi Otok,,Mir,boja,"44.055129, 15.297856"
-6,2017-09-14,38.0,6:54,10.67,2:18,SZ,Sali,Dugi Otok,,Veli Rat,boja,"44.055129, 15.297856"
-7,2017-09-15,33.0,6:00,10.87,2:06,JV,Vrak,,Sukoshan,,marina,"44.055129, 15.297856"
+1,2017-09-09,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.054903, 15.296780"
+2,2017-09-10,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.054903, 15.296780"
+3,2017-09-11,13.42,2:26,0.0,0:00,,,,Sukoshan,,marina,"44.054903, 15.296780"
+4,2017-09-12,37.0,6:43,15.64,3:21,JV,,Žirje,,Mala Stupica,boja,"43.635289, 15.704752"
+5,2017-09-13,32.0,5:48,0.0,0:00,SZ,,Dugi Otok,,Mir,boja,"43.893733, 15.158419"
+6,2017-09-14,38.0,6:54,10.67,2:18,SZ,Sali,Dugi Otok,,Veli Rat,boja,"44.151063, 14.836791"
+7,2017-09-15,33.0,6:00,10.87,2:06,JV,Vrak,,Sukoshan,,marina,"44.054903, 15.296780"
 8,2017-09-16,0.0,0:00,0.0,0:00,,,,,,,N/A
