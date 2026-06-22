@@ -37,29 +37,25 @@ const TripDetail = ({ trip, onClose }) => {
     setExpandedRowIndex(expandedRowIndex === index ? null : index);
   };
 
-  const MapRow = ({ log }) => {
+  const MapView = ({ log }) => {
     const parts = log.location?.split(',');
     const lat = parseFloat(parts?.[0]);
     const lng = parseFloat(parts?.[1]);
     if (isNaN(lat) || isNaN(lng)) return null;
 
     return (
-      <tr>
-        <td colSpan="12" className="p-0">
-          <div className="h-[300px] w-full max-w-[100dvw] rounded-b-lg overflow-hidden border-t">
-            <MapContainer center={[lat, lng]} zoom={14} className="h-full w-full" scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <MapResizer />
-              <Marker position={[lat, lng]}>
-                <Popup>{log.location}</Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-        </td>
-      </tr>
+      <div className="h-[300px] w-full rounded-b-lg overflow-hidden border-t">
+        <MapContainer center={[lat, lng]} zoom={14} className="h-full w-full" scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <MapResizer />
+          <Marker position={[lat, lng]}>
+            <Popup>{log.location}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
     );
   };
 
@@ -137,14 +133,14 @@ const TripDetail = ({ trip, onClose }) => {
                     <td className="p-3 text-gray-600">{log.overnightCity}</td>
                     <td className="p-3 text-gray-600">{log.overnightBay}</td>
                     <td className="p-3 text-gray-600">{log.mooringType}</td>
-                  </tr>
-                  {expandedRowIndex === index && <MapRow log={log} />}
+                    </tr>
                 </React.Fragment>
               );
             })}
           </tbody>
         </table>
       </div>
+      {expandedRowIndex !== null && <MapView log={dailyLogs[expandedRowIndex]} />}
     </div>
   );
 };
