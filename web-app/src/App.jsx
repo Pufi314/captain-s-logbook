@@ -66,17 +66,17 @@ function App() {
         <div id="voyage-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage</h2>
-            <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={setSelectedTrip} />
+            <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={(trip) => { setSelectedTrip(trip); setSelectedPlace(null); setSelectedCrew(null); }} />
           </div>
           {selectedTrip && (
             <div className="border-t pt-4">
-              <TripDetail trip={selectedTrip} onClose={() => setSelectedTrip(null)} />
+              <TripDetail key={selectedTrip.metadata.tripId} trip={selectedTrip} onClose={() => setSelectedTrip(null)} />
             </div>
           )}
         </div>
 
         <div id="place-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
-          <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null)} />
+          <PlaceSelector placeIndex={placeIndex} filterKey={placeFilter} onFilterChange={(key) => { setPlaceFilter(key); setSelectedPlace(null); }} value={selectedPlace ? selectedPlace.name : ''} onSelect={(name) => { setSelectedPlace(name ? { name, data: placeIndex.get(name) } : null); setSelectedTrip(null); setSelectedCrew(null); }} />
           {selectedPlace && (
             <div className="border-t pt-4">
               <PlaceDetail place={selectedPlace.name} data={selectedPlace.data || placeIndex.get(selectedPlace.name)} onClose={() => setSelectedPlace(null)} onTripSelect={handleTripSelect} onCrewSelect={handleCrewSelect} />
@@ -85,7 +85,7 @@ function App() {
         </div>
 
         <div id="crew-section" className="bg-white/80 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
-          <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null)} />
+          <CrewSelector crewIndex={crewIndex} value={selectedCrew ? selectedCrew.name : ''} onSelect={(name) => { setSelectedCrew(name ? { name, data: crewIndex.get(name) } : null); setSelectedTrip(null); setSelectedPlace(null); }} />
           {selectedCrew && (
             <div className="border-t pt-4">
               <CrewDetail name={selectedCrew.name} data={selectedCrew.data} onClose={() => setSelectedCrew(null)} onTripSelect={handleTripSelect} onPlaceSelect={handlePlaceSelect} />
