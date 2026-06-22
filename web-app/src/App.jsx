@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { parseLogFile, buildPlaceIndex, buildCrewIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
@@ -8,10 +8,8 @@ import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
 import { Compass } from 'lucide-react';
-import bgImage from './assets/20240719_112113.jpg';
 
 function App() {
-  const bgRef = useRef(null);
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [placeFilter, setPlaceFilter] = useState('overnightCity');
@@ -48,38 +46,8 @@ function App() {
       .then(data => setTrips(data));
   }, []);
 
-  useEffect(() => {
-    const bg = bgRef.current;
-    if (!bg) return;
-
-    let ticking = false;
-    const update = () => {
-      bg.style.transform = `translateY(${window.scrollY}px)`;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    update();
-
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
-    <div className="relative min-h-screen">
-      <div ref={bgRef}
-           className="absolute top-0 left-0 -z-10 bg-cover bg-center"
-           style={{
-             width: '100%',
-             height: '100dvh',
-             backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})`
-           }} />
+    <div className="min-h-screen">
         <header className="bg-[#1a365d] text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
