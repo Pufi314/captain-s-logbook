@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
 html {
-  height: 100%;
-  overflow: hidden;
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./assets/20240719_112113.jpg') center/cover #111;
-}
-
-body {
-  height: 100%;
-  overflow-y: auto;
-  overscroll-behavior: none;
+  background-color: #111;
 }
