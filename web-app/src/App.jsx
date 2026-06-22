@@ -8,7 +8,6 @@ import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
 import { Compass } from 'lucide-react';
-import bgImage from './assets/20240719_112113.jpg';
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -48,7 +47,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})` }}>
+    <div className="min-h-screen">
       <header className="bg-[#1a365d] text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
