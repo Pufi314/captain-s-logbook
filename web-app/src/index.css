@@ -9,8 +9,8 @@ html {
   min-height: 100dvh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   html {
-    background: linear-gradient(rgba(0,0,0,0.10), rgba(0,0,0,0.10)), url('./assets/20240719_112113.jpg') center/cover fixed #ddd;
+    background: url('./assets/20240719_112113.jpg') center/cover fixed #ddd;
   }
 }
