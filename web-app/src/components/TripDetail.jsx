@@ -46,7 +46,7 @@ const TripDetail = ({ trip, onClose }) => {
     return (
       <tr>
         <td colSpan="12" className="p-0">
-          <div className="h-[300px] w-full rounded-b-lg overflow-hidden border-t">
+          <div className="h-[300px] w-full max-w-[100dvw] rounded-b-lg overflow-hidden border-t">
             <MapContainer center={[lat, lng]} zoom={14} className="h-full w-full" scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
