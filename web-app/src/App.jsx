@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Fragment } from 'react';
 import { parseLogFile, buildPlaceIndex, buildCrewIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
@@ -48,7 +48,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})` }}>
+    <Fragment>
+    <div className="fixed inset-0 -z-10 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})` }} />
+    <div className="relative min-h-screen">
       <header className="bg-[#1a365d] text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
@@ -96,7 +98,7 @@ function App() {
         </section>
       </main>
     </div>
+    </Fragment>
   );
 }
-
 export default App;
