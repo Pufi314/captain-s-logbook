@@ -20,7 +20,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
           <p className="text-2xl font-bold text-gray-800">{value}</p>
-          {subtitle && <p className="text-sm text-gray-500 mt-1">{subtitle}</p>}
+          {subtitle && <p className="text-sm text-gray-500 mt-1 truncate">{subtitle}</p>}
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Miles</h3>
               <p className="text-lg font-bold">{((aggregated.sailsMiles / (aggregated.totalMiles || 1)) * 100).toFixed(1)}%</p>
-              <p className="text-sm text-gray-500">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
+              <p className="text-sm text-gray-500 truncate">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
             </div>
           </div>
           <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 min-h-[130px]">
@@ -46,7 +46,7 @@ const Dashboard = ({ trips, onTripSelect }) => {
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Hours</h3>
               <p className="text-lg font-bold">{((aggregated.sailsMinutes / (aggregated.totalMinutes || 1)) * 100).toFixed(1)}%</p>
-              <p className="text-sm text-gray-500">{(aggregated.sailsMinutes / 60).toFixed(1)} h / {(aggregated.totalMinutes / 60).toFixed(1)} h</p>
+              <p className="text-sm text-gray-500 truncate">{(aggregated.sailsMinutes / 60).toFixed(1)} h / {(aggregated.totalMinutes / 60).toFixed(1)} h</p>
             </div>
           </div>
           <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 min-h-[130px]">
