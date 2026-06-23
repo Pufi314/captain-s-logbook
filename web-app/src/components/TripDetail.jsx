@@ -53,7 +53,7 @@ const TripDetail = ({ trip, csvFile, onClose }) => {
 
     useEffect(() => {
       if (showRoute && gpxCoords?.length > 0) {
-        map.fitBounds(gpxCoords, { padding: [30, 30] });
+        map.flyToBounds(gpxCoords, { padding: [30, 30] });
       } else if (!showRoute && prevShowRoute.current) {
         map.flyTo(markerPos, map.getZoom() < 14 ? 14 : map.getZoom());
       }

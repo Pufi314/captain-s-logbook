@@ -22,4 +22,4 @@ day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,inter
 5,2024-05-29,12.08,2:13,0.5,0:21,SZ,,Dugi Otok,Sali,,molo,"43.936393, 15.166285"
 6,2024-05-30,31.85,7:18,21.0,4:28,SV,,Ugljan,Kukljica,,molo,"44.034616, 15.247593"
 7,2024-05-31,0.0,0:00,0.0,0:00,,,Ugljan,Kukljica,,molo,"44.034616, 15.247593"
-8,2024-06-01,3.0,0:30,0.0,0:00,SV,,,,,,N/A
+8,2024-06-01,3.0,0:30,0.0,0:00,SV,,,,,,"44.054607, 15.296629"

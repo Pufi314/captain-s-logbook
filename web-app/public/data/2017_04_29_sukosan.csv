@@ -22,4 +22,4 @@ day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,inter
 5,2017-05-03,27.7,8:23,18.07,4:09,SZ,,Dugi Otok,,Veli Rat,boja,"44.159669, 14.833413"
 6,2017-05-04,27.3,9:44,6.9,2:10,V,"Vrak, Sakarun, Ponorkovy bunker",Ugljan,Muline,,molo,"44.137228, 15.070578"
 7,2017-05-05,14.2,2:20,0.0,0:00,JV,Zadar pumpa,,Sukoshan,,marina,"44.055158, 15.296340"
-8,2017-05-06,0.0,0:00,0.0,0:00,,,,,,,N/A
+8,2017-05-06,0.0,0:00,0.0,0:00,,,,,,,"44.055158, 15.296340"

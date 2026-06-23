@@ -22,4 +22,4 @@ day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,inter
 5,2019-08-21,19.0,4:22,0.0,0:00,JZ,Uvala Zakamica,,Komiža,,molo,"43.044567, 16.086335"
 6,2019-08-22,38.34,9:28,15.2,3:10,SSZ,Uvala Zakamica,,Primošten,,molo,"43.585061, 15.923637"
 7,2019-08-23,36.93,8:42,13.04,2:53,SZ,Prvič Luka,Vrgada,Vrgada,,boja,"43.861436, 15.502471"
-8,2019-08-24,15.98,2:45,0.0,0:00,SZ,,,,,,N/A
+8,2019-08-24,15.98,2:45,0.0,0:00,SZ,,,,,,"44.054894, 15.296905"
