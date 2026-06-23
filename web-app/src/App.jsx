@@ -40,9 +40,10 @@ function App() {
   useEffect(() => {
     fetch('data/data-index.json')
       .then(res => res.json())
-      .then(files => Promise.all(files.map(file => 
-        fetch(`data/${file}`).then(res => res.text()).then(text => parseLogFile(text))
-      )))
+      .then(files => Promise.all(files.map(file => {
+        const csvFile = file.replace('.csv', '');
+        return fetch(`data/${file}`).then(res => res.text()).then(text => ({ ...parseLogFile(text), csvFile }));
+      })))
       .then(data => setTrips(data));
   }, []);
 
@@ -69,7 +70,7 @@ function App() {
           </div>
           {selectedTrip && (
             <div className="border-t pt-4">
-              <TripDetail key={selectedTrip.metadata.tripId} trip={selectedTrip} onClose={() => setSelectedTrip(null)} />
+              <TripDetail key={selectedTrip.metadata.tripId} trip={selectedTrip} csvFile={selectedTrip.csvFile} onClose={() => setSelectedTrip(null)} />
             </div>
           )}
         </div>

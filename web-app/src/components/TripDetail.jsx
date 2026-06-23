@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp, Route } from 'lucide-react';
 
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -15,7 +15,17 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-const TripDetail = ({ trip, onClose }) => {
+const parseGPX = (gpxText) => {
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(gpxText, 'text/xml');
+  const trkpts = xml.querySelectorAll('trkpt');
+  return Array.from(trkpts).map(pt => [
+    parseFloat(pt.getAttribute('lat')),
+    parseFloat(pt.getAttribute('lon')),
+  ]);
+};
+
+const TripDetail = ({ trip, csvFile, onClose }) => {
   if (!trip) return null;
 
   const { metadata, dailyLogs } = trip;
@@ -37,24 +47,94 @@ const TripDetail = ({ trip, onClose }) => {
     setExpandedRowIndex(expandedRowIndex === index ? null : index);
   };
 
-  const MapView = ({ log }) => {
+  const RouteFitter = ({ showRoute, gpxCoords, markerPos }) => {
+    const map = useMap();
+    const prevShowRoute = React.useRef(showRoute);
+
+    useEffect(() => {
+      if (showRoute && gpxCoords?.length > 0) {
+        map.fitBounds(gpxCoords, { padding: [30, 30] });
+      } else if (!showRoute && prevShowRoute.current) {
+        map.flyTo(markerPos, map.getZoom() < 14 ? 14 : map.getZoom());
+      }
+      prevShowRoute.current = showRoute;
+    }, [showRoute, gpxCoords, map, markerPos]);
+
+    return null;
+  };
+
+  const MapView = ({ log, csvFile }) => {
     const parts = log.location?.split(',');
     const lat = parseFloat(parts?.[0]);
     const lng = parseFloat(parts?.[1]);
     if (isNaN(lat) || isNaN(lng)) return null;
 
+    const dayNum = log.day;
+    const gpxUrl = `data/gpx/${csvFile}_day_${dayNum}.gpx`;
+    const [gpxCoords, setGpxCoords] = useState(null);
+    const [gpxStatus, setGpxStatus] = useState('loading');
+    const [showRoute, setShowRoute] = useState(false);
+
+    useEffect(() => {
+      setGpxCoords(null);
+      setGpxStatus('loading');
+      setShowRoute(false);
+      fetch(gpxUrl)
+        .then(res => {
+          if (!res.ok) throw new Error('not found');
+          return res.text();
+        })
+        .then(text => {
+          const coords = parseGPX(text);
+          if (coords.length > 0) {
+            setGpxCoords(coords);
+            setGpxStatus('loaded');
+          } else {
+            setGpxStatus('missing');
+          }
+        })
+        .catch(() => setGpxStatus('missing'));
+    }, [gpxUrl]);
+
     return (
-      <div className="h-[300px] w-full rounded-b-lg overflow-hidden border-t">
+      <div className="h-[300px] w-full rounded-b-lg overflow-hidden border-t relative">
         <MapContainer center={[lat, lng]} zoom={14} className="h-full w-full" scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MapResizer />
+          <RouteFitter showRoute={showRoute} gpxCoords={gpxCoords} markerPos={[lat, lng]} />
           <Marker position={[lat, lng]}>
             <Popup>{log.location}</Popup>
           </Marker>
+          {showRoute && gpxCoords && (
+            <Polyline positions={gpxCoords} color="#3b82f6" weight={3} opacity={0.7} />
+          )}
         </MapContainer>
+        <div className="absolute top-2 right-2 z-[1000]">
+          {gpxStatus === 'loading' && (
+            <button className="bg-white/80 text-gray-400 px-3 py-1.5 rounded text-sm shadow cursor-not-allowed" disabled>&hellip;</button>
+          )}
+          {gpxStatus === 'missing' && (
+            <button className="bg-white/80 text-gray-400 px-3 py-1.5 rounded text-sm shadow cursor-not-allowed opacity-60 flex items-center gap-1" disabled title="No route recorded">
+              <Route className="w-4 h-4" /> Route
+            </button>
+          )}
+          {gpxStatus === 'loaded' && (
+            <button
+              onClick={() => setShowRoute(!showRoute)}
+              className={`px-3 py-1.5 rounded text-sm shadow cursor-pointer flex items-center gap-1 transition-colors ${
+                showRoute
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-white/80 text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <Route className="w-4 h-4" />
+              {showRoute ? 'Point' : 'Route'}
+            </button>
+          )}
+        </div>
       </div>
     );
   };
@@ -140,7 +220,7 @@ const TripDetail = ({ trip, onClose }) => {
           </tbody>
         </table>
       </div>
-      {expandedRowIndex !== null && <MapView log={dailyLogs[expandedRowIndex]} />}
+      {expandedRowIndex !== null && <MapView log={dailyLogs[expandedRowIndex]} csvFile={csvFile} />}
     </div>
   );
 };
