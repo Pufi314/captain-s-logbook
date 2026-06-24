@@ -19,13 +19,28 @@ function App() {
   useEffect(() => {
     const appUrl = window.location.href;
     window.history.pushState(null, '', appUrl);
-    const handlePopState = () => { window.history.pushState(null, '', appUrl); };
-    const handlePageShow = (e) => { if (e.persisted) window.location.reload(); };
+
+    const handlePopState = () => {
+      window.history.go(1);
+    };
+
+    const handlePageShow = (e) => {
+      if (e.persisted) window.location.reload();
+    };
+
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('pageshow', handlePageShow);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
     return () => {
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('pageshow', handlePageShow);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []);
 
