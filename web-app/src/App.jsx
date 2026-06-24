@@ -7,7 +7,7 @@ import PlaceSelector from './components/PlaceSelector';
 import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
-import { Compass } from 'lucide-react';
+import { Compass, ArrowLeft } from 'lucide-react';
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -75,7 +75,7 @@ function App() {
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           {(selectedTrip || selectedPlace || selectedCrew) && (
             <button onClick={() => { setSelectedTrip(null); setSelectedPlace(null); setSelectedCrew(null); }} className="p-1 hover:bg-white/10 rounded transition-colors" aria-label="Back">
-              <span className="text-xl">&larr;</span>
+              <ArrowLeft className="w-6 h-6" />
             </button>
           )}
           <Compass className="w-8 h-8" />
