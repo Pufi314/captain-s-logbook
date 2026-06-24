@@ -17,24 +17,11 @@ function App() {
   const [selectedCrew, setSelectedCrew] = useState(null);
 
   useEffect(() => {
-    const appUrl = window.location.href;
-    window.history.pushState(null, '', appUrl);
-
-    const handlePopState = () => {
-      window.history.go(1);
-    };
-
     const handlePageShow = (e) => {
       if (e.persisted) window.location.reload();
     };
-
-    window.addEventListener('popstate', handlePopState);
     window.addEventListener('pageshow', handlePageShow);
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('pageshow', handlePageShow);
-    };
+    return () => window.removeEventListener('pageshow', handlePageShow);
   }, []);
 
   const handleTripSelect = (trip) => {
