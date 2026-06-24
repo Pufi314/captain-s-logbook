@@ -15,6 +15,20 @@ function App() {
   const [placeFilter, setPlaceFilter] = useState('overnightCity');
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedCrew, setSelectedCrew] = useState(null);
+
+  useEffect(() => {
+    const appUrl = window.location.href;
+    window.history.pushState(null, '', appUrl);
+    const handlePopState = () => { window.history.pushState(null, '', appUrl); };
+    const handlePageShow = (e) => { if (e.persisted) window.location.reload(); };
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('pageshow', handlePageShow);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('pageshow', handlePageShow);
+    };
+  }, []);
+
   const handleTripSelect = (trip) => {
     setSelectedTrip(trip);
     requestAnimationFrame(() => {
