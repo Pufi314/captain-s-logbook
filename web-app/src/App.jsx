@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { parseLogFile, buildPlaceIndex, buildCrewIndex } from './utils/logProcessor';
 import Dashboard from './components/Dashboard';
 import TripDetail from './components/TripDetail';
@@ -9,12 +9,20 @@ import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
 import { Compass } from 'lucide-react';
 
+const CAPTAINS = [
+  { key: 'michal', label: 'Michal', initial: 'M', fullName: 'Michal Puffler' },
+  { key: 'ondrej', label: 'Ondrej', initial: 'O', fullName: 'Ondrej Puffler' },
+];
+
 function App() {
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [placeFilter, setPlaceFilter] = useState('overnightCity');
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedCrew, setSelectedCrew] = useState(null);
+  const [captain, setCaptain] = useState('michal');
+  const [captainDropdownOpen, setCaptainDropdownOpen] = useState(false);
+  const captainRef = useRef(null);
 
   useEffect(() => {
     const handlePageShow = (e) => {
@@ -23,6 +31,24 @@ function App() {
     window.addEventListener('pageshow', handlePageShow);
     return () => window.removeEventListener('pageshow', handlePageShow);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (captainRef.current && !captainRef.current.contains(e.target)) {
+        setCaptainDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    setSelectedTrip(null);
+    setSelectedPlace(null);
+    setSelectedCrew(null);
+  }, [captain]);
+
+  const currentCaptain = CAPTAINS.find(c => c.key === captain);
 
   const handleTripSelect = (trip) => {
     setSelectedTrip(trip);
@@ -47,14 +73,15 @@ function App() {
   const crewIndex = useMemo(() => buildCrewIndex(trips), [trips]);
 
   useEffect(() => {
-    fetch('data/data-index.json')
+    const dataDir = `data/${captain}`;
+    fetch(`${dataDir}/data-index.json`)
       .then(res => res.json())
       .then(files => Promise.all(files.map(file => {
         const csvFile = file.replace('.csv', '');
-        return fetch(`data/${file}`).then(res => res.text()).then(text => ({ ...parseLogFile(text), csvFile }));
+        return fetch(`${dataDir}/${file}`).then(res => res.text()).then(text => ({ ...parseLogFile(text), csvFile }));
       })))
       .then(data => setTrips(data));
-  }, []);
+  }, [captain]);
 
   return (
     <div className="min-h-screen">
@@ -62,11 +89,33 @@ function App() {
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
           <h1 className="text-2xl font-bold">Captain's Logbook Dashboard</h1>
+          <div className="relative ml-auto" ref={captainRef}>
+            <button
+              onClick={() => setCaptainDropdownOpen(!captainDropdownOpen)}
+              className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold hover:bg-white/30 transition-colors"
+              aria-label="Switch captain"
+            >
+              {currentCaptain?.initial}
+            </button>
+            {captainDropdownOpen && (
+              <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-1 min-w-[180px] z-50">
+                {CAPTAINS.map(c => (
+                  <button
+                    key={c.key}
+                    onClick={() => { setCaptain(c.key); setCaptainDropdownOpen(false); }}
+                    className={`w-full text-left px-4 py-2 text-sm ${c.key === captain ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
       <main className="max-w-6xl mx-auto p-4 space-y-6">
-        {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} />}
+        {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} captainName={currentCaptain.fullName} />}
 
         <section>
           <h2 className="text-xl font-bold text-white mb-4">Explore</h2>
@@ -79,7 +128,7 @@ function App() {
           </div>
           {selectedTrip && (
             <div className="border-t pt-4">
-              <TripDetail key={selectedTrip.metadata.tripId} trip={selectedTrip} csvFile={selectedTrip.csvFile} onClose={() => setSelectedTrip(null)} />
+              <TripDetail key={selectedTrip.metadata.tripId} trip={selectedTrip} csvFile={selectedTrip.csvFile} onClose={() => setSelectedTrip(null)} captain={captain} />
             </div>
           )}
         </div>

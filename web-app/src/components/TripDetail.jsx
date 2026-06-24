@@ -25,7 +25,7 @@ const parseGPX = (gpxText) => {
   ]);
 };
 
-const TripDetail = ({ trip, csvFile, onClose }) => {
+const TripDetail = ({ trip, csvFile, onClose, captain }) => {
   if (!trip) return null;
 
   const { metadata, dailyLogs } = trip;
@@ -70,7 +70,8 @@ const TripDetail = ({ trip, csvFile, onClose }) => {
     if (isNaN(lat) || isNaN(lng)) return null;
 
     const dayNum = log.day;
-    const gpxUrl = `data/gpx/${csvFile}_day_${dayNum}.gpx`;
+    const dataDir = `data/${captain}`;
+    const gpxUrl = `${dataDir}/gpx/${csvFile}_day_${dayNum}.gpx`;
     const [gpxCoords, setGpxCoords] = useState(null);
     const [gpxStatus, setGpxStatus] = useState('loading');
     const [showRoute, setShowRoute] = useState(false);

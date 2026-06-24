@@ -2,10 +2,10 @@ import React from 'react';
 import { aggregateStats } from '../utils/logProcessor';
 import { Anchor, LifeBuoy, Clock, MapPin, Compass, Ship } from 'lucide-react';
 
-const Dashboard = ({ trips, onTripSelect }) => {
+const Dashboard = ({ trips, onTripSelect, captainName }) => {
   const aggregated = aggregateStats(trips);
   const totalTrips = trips.length;
-  const captainTrips = trips.filter(t => t.metadata.captain === 'Michal Puffler').length;
+  const captainTrips = trips.filter(t => t.metadata.captain === captainName).length;
 
   const topCities = Object.entries(aggregated.cities)
     .sort((a, b) => b[1] - a[1])
