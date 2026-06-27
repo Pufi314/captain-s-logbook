@@ -15,12 +15,12 @@ const Dashboard = ({ trips, onTripSelect, captainName }) => {
   
   const StatCard = ({ title, value, icon: Icon, subtitle, onClick }) => {
     return (
-      <div onClick={onClick} className={`bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(e); } } : {})}>
-        {Icon && <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-6 h-6" /></div>}
+      <div onClick={onClick} className={`bg-white/60 p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3 ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow text-left w-full' : ''}`} {...(onClick ? { role: 'button', tabIndex: 0, onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') onClick(e); } } : {})}>
+        {Icon && <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><Icon className="w-5 h-5" /></div>}
         <div>
           <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{title}</h3>
-          <p className="text-2xl font-bold text-gray-800">{value}</p>
-          {subtitle && <p className="text-sm text-gray-500 mt-1">{subtitle}</p>}
+          <p className="text-xl font-bold text-gray-800">{value}</p>
+          {subtitle && <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}
         </div>
       </div>
     );
@@ -33,36 +33,36 @@ const Dashboard = ({ trips, onTripSelect, captainName }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard title="Total Miles" value={aggregated.totalMiles.toFixed(1) + ' NM'} icon={Compass} />
           <StatCard title="Total Hours" value={(aggregated.totalMinutes / 60).toFixed(1) + ' h'} icon={Clock} />
-          <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Ship className="w-6 h-6" /></div>
+          <div className="bg-white/60 p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
+            <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><Ship className="w-5 h-5" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Miles</h3>
-              <p className="text-lg font-bold">{((aggregated.sailsMiles / (aggregated.totalMiles || 1)) * 100).toFixed(1)}%</p>
+              <p className="text-base font-bold">{((aggregated.sailsMiles / (aggregated.totalMiles || 1)) * 100).toFixed(1)}%</p>
               <p className="text-sm text-gray-500">{aggregated.sailsMiles.toFixed(1)} NM / {aggregated.totalMiles.toFixed(1)} NM</p>
             </div>
           </div>
-          <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Clock className="w-6 h-6" /></div>
+          <div className="bg-white/60 p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
+            <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><Clock className="w-5 h-5" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Sails Hours</h3>
-              <p className="text-lg font-bold">{((aggregated.sailsMinutes / (aggregated.totalMinutes || 1)) * 100).toFixed(1)}%</p>
+              <p className="text-base font-bold">{((aggregated.sailsMinutes / (aggregated.totalMinutes || 1)) * 100).toFixed(1)}%</p>
               <p className="text-sm text-gray-500">{(aggregated.sailsMinutes / 60).toFixed(1)} h / {(aggregated.totalMinutes / 60).toFixed(1)} h</p>
             </div>
           </div>
-          <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-6 h-6" /></div>
+          <div className="bg-white/60 p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
+            <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-5 h-5" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Anchor/Buoy %</h3>
-              <p className="text-lg font-bold">Anchor: {((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
-              <p className="text-lg font-bold">Buoy: {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
+              <p className="text-sm font-bold">Anchor: {((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
+              <p className="text-sm font-bold">Buoy: {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1) + '%'}</p>
             </div>
           </div>
-          <div className="bg-white/60 p-5 rounded-lg shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="p-3 bg-blue-50 text-blue-700 rounded-full"><LifeBuoy className="w-6 h-6" /></div>
+          <div className="bg-white/60 p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
+            <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><LifeBuoy className="w-5 h-5" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">Trips</h3>
-              <p className="text-2xl font-bold text-gray-800">{totalTrips}</p>
-              <p className="text-sm text-gray-500 mt-1">as captain: {captainTrips}</p>
+              <p className="text-xl font-bold text-gray-800">{totalTrips}</p>
+              <p className="text-sm text-gray-500">as captain: {captainTrips}</p>
             </div>
           </div>
         </div>
