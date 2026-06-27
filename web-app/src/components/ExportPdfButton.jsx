@@ -142,7 +142,8 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
           }
         }
 
-        pdf.save(`${csvFile}-summary.pdf`);
+        const pdfDataUri = pdf.output('datauri', { filename: `${csvFile}-summary.pdf` });
+        window.open(pdfDataUri, '_blank');
       } catch (err) {
         console.error('PDF export failed:', err);
       }
