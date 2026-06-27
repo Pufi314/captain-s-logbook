@@ -42,10 +42,10 @@ export const parseLogFile = (csvText) => {
     }
 
     if (section === 'METADATA') {
-      const [key, value] = line.split(',');
+      const [key, value] = splitCSVLine(line);
       if (key !== 'Key') {
         if (key === 'crew' || key === 'captains') {
-          metadata[key] = value.replace(/"/g, '').split(';').map(s => s.trim());
+          metadata[key] = value.split(';').map(s => s.trim());
         } else {
           metadata[key] = value;
         }
