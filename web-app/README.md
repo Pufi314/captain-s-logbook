@@ -1,16 +1,66 @@
-# React + Vite
+# Captain's Logbook Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web app to visualize and manage sailing trip logs from CSV files, with per-captain data separation.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+cd web-app
+npm install
+npm run dev
+```
 
-## React Compiler
+Served at `http://localhost:5173/captain-s-logbook/`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build & Deploy
 
-## Expanding the ESLint configuration
+```bash
+npm run build     # outputs to dist/
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Commits pushed to `main` deploy to GitHub Pages via GitHub Actions.
+
+## Project Structure
+
+```
+public/
+  data/
+    michal/          ── Michal Puffler's trips (18 CSVs + GPX)
+    ondrej/          ── Ondrej Puffler's trips (10 CSVs + GPX)
+  csv-editor.html    ── standalone CSV editor (open from filesystem)
+src/
+  App.jsx            ── main app, captain selector, data fetch
+  components/
+    Dashboard.jsx    ── stats cards + records
+    TripDetail.jsx   ── per-trip map, table, GPX overlay
+    TripSelector.jsx ── voyage dropdown
+    PlaceSelector.jsx
+    PlaceDetail.jsx
+    CrewSelector.jsx
+    CrewDetail.jsx
+  utils/
+    logProcessor.js  ── CSV parser, aggregators, indices
+```
+
+## Features
+
+- **Captains** — switch between Michal / Ondrej via header icon; each has own data directory
+- **Dashboard** — total miles/hours, sail %, mooring stats, records
+- **Trip detail** — daily log table with expandable map rows; GPX route overlay toggle
+- **Places** — browse overnight cities/bays/islands with crew per location
+- **Crew** — browse crew members with their trips and visited places
+- **CSV Editor** — standalone HTML tool; load/edit/save CSV files from filesystem
+- **PWA** — add to home screen via manifest.json
+
+## Data
+
+Each captain directory contains:
+- `data-index.json` — list of CSV filenames
+- `*.csv` — trip files (metadata + daily logs)
+- `gpx/*.gpx` — GPS track files per day
+
+Adding a new trip: add the CSV to the captain's directory, update `data-index.json`, add GPX files to `gpx/`. No rebuild needed.
+
+## CSV Format
+
+Two sections: `# METADATA` (key-value) and `# DAILY LOGS` (comma-separated table). See any CSV in `public/data/` for reference.
