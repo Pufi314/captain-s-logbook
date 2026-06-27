@@ -7,7 +7,8 @@ import PlaceSelector from './components/PlaceSelector';
 import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
-import { Compass } from 'lucide-react';
+import { Compass, HelpCircle } from 'lucide-react';
+import HelpDialog from './components/HelpDialog';
 
 const CAPTAINS = [
   { key: 'michal', label: 'Michal', initial: 'M', fullName: 'Michal Puffler' },
@@ -22,6 +23,7 @@ function App() {
   const [selectedCrew, setSelectedCrew] = useState(null);
   const [captain, setCaptain] = useState('michal');
   const [captainDropdownOpen, setCaptainDropdownOpen] = useState(false);
+  const [helpDialogOpen, setHelpDialogOpen] = useState(false);
   const captainRef = useRef(null);
 
   useEffect(() => {
@@ -89,7 +91,15 @@ function App() {
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
           <h1 className="text-2xl font-bold">Captain's Logbook Dashboard</h1>
-          <div className="relative ml-auto" ref={captainRef}>
+          <div className="ml-auto flex items-center gap-2">
+          <button
+            onClick={() => setHelpDialogOpen(true)}
+            className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+            aria-label="Help"
+          >
+            <HelpCircle className="w-5 h-5" />
+          </button>
+          <div className="relative" ref={captainRef}>
             <button
               onClick={() => setCaptainDropdownOpen(!captainDropdownOpen)}
               className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold hover:bg-white/30 transition-colors"
@@ -110,6 +120,7 @@ function App() {
                 ))}
               </div>
             )}
+          </div>
           </div>
         </div>
       </header>
@@ -153,6 +164,7 @@ function App() {
         </div>
         </section>
       </main>
+      <HelpDialog isOpen={helpDialogOpen} onClose={() => setHelpDialogOpen(false)} />
     </div>
   );
 }
