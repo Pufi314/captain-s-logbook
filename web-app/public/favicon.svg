@@ -14,6 +14,8 @@
       <stop offset="100%" stop-color="#8B4513"/>
     </linearGradient>
   </defs>
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="#1a365d"/>
   <!-- Outer ring -->
   <circle cx="50" cy="50" r="44" fill="none" stroke="#8B4513" stroke-width="5"/>
   <circle cx="50" cy="50" r="44" fill="none" stroke="#A0522D" stroke-width="2.5"/>
@@ -36,6 +38,6 @@
   <!-- Central hub -->
   <circle cx="50" cy="50" r="12" fill="url(#hub)"/>
   <circle cx="50" cy="50" r="10" fill="none" stroke="#D2691E" stroke-width="1.5"/>
-  <circle cx="50" cy="50" r="4" fill="#5C2E0B"/>
+  <circle cx="50" cy="50" r="4" fill="#1a365d"/>
   <circle cx="50" cy="50" r="2" fill="#DEB887"/>
 </svg>
