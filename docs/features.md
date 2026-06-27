@@ -153,6 +153,19 @@
 - `display: standalone` for app-like experience
 - No service worker (offline not supported)
 
+## PDF Export
+- Button in TripDetail header (FileText icon) triggers export
+- Generates an A4 landscape PDF with:
+  - **Overview map** — Leaflet map with numbered day markers and GPX route polylines, side-by-side with metadata (metadata left, map right, both 300px tall)
+  - **Metadata** — boat, home marina, captain, crew, other captains, price
+  - **Summary statistics** — total miles, hours, sail percentages
+  - **Daily log table** — full 12-column table with fixed row heights
+- Multi-page support: content splits at table row boundaries if it exceeds one page; leftover rows render at proportional height (no stretching)
+- Side-by-side layout saves vertical space, fitting most trips (≤10 rows) on a single page
+- Loading overlay (centered spinner + "Generating PDF..." text) covers the page from click through capture to prevent flash of overlapping content
+- Works on mobile via `position: fixed` overlay
+- Depends on `html2canvas` (DOM capture) and `jspdf` (PDF generation)
+
 ## Trip Detail Interactions
 - Switching trips resets expanded map rows via `key={selectedTrip.metadata.tripId}`
 - Selecting a dropdown (trip/place/crew) clears the other two selections

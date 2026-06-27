@@ -104,9 +104,15 @@ const sk = {
   "Switching captains resets all selections":
     "Zmena kapitána vymaže všetky výbery",
 
+  /* PDF Export */
+  "PDF Export": "Exportovať PDF",
+  "Export a trip summary to PDF including an overview map with all daily markers and GPX routes, full metadata, and the daily log table. A loading overlay covers the page during generation.":
+    "Exportovať súhrn plavby do PDF vrátane prehľadovej mapy so všetkými dennými značkami a GPX trasami, úplných metadát a tabuľky denných záznamov. Počas generovania je stránka prekrytá načítacou vrstvou.",
+
   /* Dynamic titles */
   "Sailing trip from ": "Plavba z ",
   "started ": "začiatok ",
+  "Export PDF": "Exportovať PDF",
 };
 
 export default sk;

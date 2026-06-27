@@ -1,4 +1,4 @@
-import { X, Compass, Users, LayoutDashboard, Ship, MapPin, User, Route } from 'lucide-react';
+import { X, Compass, Users, LayoutDashboard, Ship, MapPin, User, Route, FileText } from 'lucide-react';
 import { useTranslation } from '../i18n/LanguageContext';
 
 function HelpDialog({ isOpen, onClose }) {
@@ -65,6 +65,12 @@ function HelpDialog({ isOpen, onClose }) {
             icon={<User className="w-5 h-5 text-blue-600" />}
             title={t('Crew')}
             desc={t("Select any crew member to see all their trips and the places they've visited. Click a trip to view its detail, or click a place badge to explore it.")}
+          />
+
+          <FeatureItem
+            icon={<FileText className="w-5 h-5 text-blue-600" />}
+            title={t('PDF Export')}
+            desc={t("Export a trip summary to PDF including an overview map with all daily markers and GPX routes, full metadata, and the daily log table. A loading overlay covers the page during generation.")}
           />
         </div>
 

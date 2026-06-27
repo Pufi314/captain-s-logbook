@@ -45,6 +45,7 @@ Adding a new trip: add CSV + update `data-index.json` + add GPX files in the cap
 
 Open `public/csv-editor.html` from the filesystem. Load a CSV via file picker, edit metadata and daily logs, save/download the result.
 
-## Active Feature
+## Active Features
 
 - [001-sailing-logbook](docs/001-sailing-logbook.md)
+- PDF Export — A4 landscape trip summary with overview map, metadata, stats, and daily log table

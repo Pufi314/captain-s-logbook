@@ -47,6 +47,7 @@ src/
 - **Captains** — switch between Michal / Ondrej via header icon; each has own data directory
 - **Dashboard** — total miles/hours, sail %, mooring stats, records
 - **Trip detail** — daily log table with expandable map rows; GPX route overlay toggle
+- **PDF Export** — A4 landscape summary with overview map, metadata, stats, and daily log table
 - **Places** — browse overnight cities/bays/islands with crew per location
 - **Crew** — browse crew members with their trips and visited places
 - **CSV Editor** — standalone HTML tool; load/edit/save CSV files from filesystem

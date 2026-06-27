@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp, Route } from 'lucide-react';
 import { useTranslation } from '../i18n/LanguageContext';
+import ExportPdfButton from './ExportPdfButton';
 
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -156,9 +157,12 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
     <div>
       <div className="flex items-center justify-between border-b pb-4 mb-6">
         <h2 className="text-2xl font-bold text-gray-800">{translateTitle(metadata.title)}</h2>
-        <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title={t('Close')}>
-          <X className="w-5 h-5 text-gray-400" />
-        </button>
+        <div className="flex items-center gap-1">
+          <ExportPdfButton trip={trip} csvFile={csvFile} captain={captain} />
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title={t('Close')}>
+            <X className="w-5 h-5 text-gray-400" />
+          </button>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gray-50 p-4 rounded-lg">
