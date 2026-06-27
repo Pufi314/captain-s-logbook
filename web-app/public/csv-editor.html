@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Captain's Logbook — CSV Editor</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #111; color: #e5e7eb; min-height: 100vh; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  header { background: #1a365d; color: #fff; padding: 16px 24px; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  header h1 { font-size: 1.25rem; font-weight: 700; flex: 1; }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+  .toolbar button { padding: 8px 16px; border: none; border-radius: 6px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+  .btn-load { background: #3b82f6; color: #fff; }
+  .btn-load:hover { background: #2563eb; }
+  .btn-new { background: #6b7280; color: #fff; }
+  .btn-new:hover { background: #4b5563; }
+  .btn-save { background: #22c55e; color: #fff; }
+  .btn-save:hover { background: #16a34a; }
+  .btn-close { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3) !important; }
+  .btn-close:hover { background: rgba(255,255,255,0.1); }
+  #fileInput { display: none; }
+  .section { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 0 0 8px 8px; padding: 20px; margin-bottom: 16px; }
+  .section-title { font-size: 1rem; font-weight: 600; color: #93c5fd; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 0.75rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; }
+  .field input, .field textarea, .field select { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 8px 10px; color: #e5e7eb; font-size: 0.875rem; font-family: inherit; }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: #3b82f6; background: rgba(59,130,246,0.1); }
+  .field textarea { resize: vertical; min-height: 60px; }
+  .field-wide { grid-column: 1 / -1; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+  th { background: rgba(255,255,255,0.08); color: #9ca3af; font-weight: 600; text-align: left; padding: 8px 6px; border: 1px solid rgba(255,255,255,0.1); white-space: nowrap; position: sticky; top: 0; }
+  td { padding: 4px 2px; border: 1px solid rgba(255,255,255,0.08); }
+  td input { width: 100%; background: transparent; border: none; padding: 6px; color: #e5e7eb; font-size: 0.8125rem; font-family: inherit; }
+  td input:focus { background: rgba(59,130,246,0.15); outline: none; border-radius: 2px; }
+  td input[type=number] { text-align: right; }
+  .row-actions { display: flex; gap: 4px; }
+  .row-actions button { padding: 4px 8px; border: none; border-radius: 3px; font-size: 0.75rem; cursor: pointer; }
+  .btn-del-row { background: #dc2626; color: #fff; }
+  .btn-del-row:hover { background: #b91c1c; }
+  .btn-add-row { margin-top: 8px; padding: 6px 14px; background: #3b82f6; color: #fff; border: none; border-radius: 4px; font-size: 0.8125rem; cursor: pointer; }
+  .btn-add-row:hover { background: #2563eb; }
+  .hidden { display: none !important; }
+  .status { padding: 10px 16px; border-radius: 6px; margin-bottom: 12px; font-size: 0.875rem; }
+  .status-info { background: rgba(59,130,246,0.2); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+  .status-error { background: rgba(220,38,38,0.2); color: #fca5a5; border: 1px solid rgba(220,38,38,0.3); }
+  .status-success { background: rgba(34,197,94,0.2); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+  .row-count { font-size: 0.75rem; color: #6b7280; margin-top: 4px; }
+  @media (max-width: 640px) { .meta-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>&#9998; CSV Editor</h1>
+    <div class="toolbar">
+      <button class="btn-load" onclick="loadCsv()">Load CSV</button>
+      <button class="btn-new" onclick="newTrip()">New Trip</button>
+      <button class="btn-save" onclick="saveCsv()">Save CSV</button>
+    </div>
+  </header>
+
+  <div id="status" class="status status-info hidden"></div>
+
+  <div class="section">
+    <div class="section-title">Metadata</div>
+    <div class="meta-grid">
+      <div class="field"><label>Trip ID</label><input id="f-tripId" placeholder="e.g. 2024-07-13-sukosan"></div>
+      <div class="field"><label>Title</label><input id="f-title" placeholder="e.g. Sailing trip from Sukošan"></div>
+      <div class="field"><label>Start Date</label><input id="f-startDate" type="date"></div>
+      <div class="field"><label>End Date</label><input id="f-endDate" type="date"></div>
+      <div class="field"><label>Boat Name</label><input id="f-boatName" placeholder="e.g. Zoilo"></div>
+      <div class="field"><label>Boat Model</label><input id="f-boatModel" placeholder="e.g. Bavaria Cruiser 51"></div>
+      <div class="field"><label>Year of Manufacture</label><input id="f-yearOfManufacture" type="number" placeholder="e.g. 2017"></div>
+      <div class="field"><label>Home Marina</label><input id="f-homeMarina" placeholder="e.g. Sukoshan"></div>
+      <div class="field"><label>Captain</label><input id="f-captain" placeholder="e.g. Ondrej Puffler"></div>
+      <div class="field"><label>Price (EUR)</label><input id="f-priceEur" type="number" step="0.01" placeholder="0"></div>
+      <div class="field field-wide"><label>Crew (semicolon separated)</label><textarea id="f-crew" placeholder="e.g. Michal Puffler; Jarka Pufflerová"></textarea></div>
+      <div class="field field-wide"><label>Other Captains (semicolon separated)</label><textarea id="f-captains" placeholder="e.g. Vlado Sredau; Jano Neščivera"></textarea></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Daily Logs</div>
+    <div class="table-wrap">
+      <table id="logs-table">
+        <thead>
+          <tr>
+            <th style="width:32px"></th>
+            <th>Day</th><th>Date</th><th>Dist (NM)</th><th>Time</th>
+            <th>Sails Dist</th><th>Sails Time</th><th>Dir</th>
+            <th>Stops</th><th>Island</th><th>City</th><th>Bay</th>
+            <th>Mooring</th><th>Location</th>
+          </tr>
+        </thead>
+        <tbody id="logs-body"></tbody>
+      </table>
+    </div>
+    <button class="btn-add-row" onclick="addRow()">+ Add Row</button>
+    <div class="row-count" id="row-count">0 rows</div>
+  </div>
+</div>
+
+<script>
+let currentFileName = '';
+let rowIdCounter = 0;
+
+function splitCsvLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQuotes = !inQuotes; continue; }
+    if (ch === ',' && !inQuotes) { result.push(current); current = ''; continue; }
+    current += ch;
+  }
+  result.push(current);
+  return result;
+}
+
+function parseCsv(text) {
+  const lines = text.split(/\r?\n/);
+  let section = 'metadata';
+  const meta = {};
+  const logs = [];
+  const headers = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line === '' || line.startsWith('#')) {
+      if (line.startsWith('# DAILY LOGS')) section = 'logs';
+      continue;
+    }
+    if (section === 'metadata') {
+      const idx = line.indexOf(',');
+      if (idx === -1) { meta[line] = ''; continue; }
+      const key = line.substring(0, idx).trim();
+      const value = line.substring(idx + 1).trim();
+      meta[key] = value.replace(/^"(.*)"$/, '$1');
+    } else {
+      if (headers.length === 0) {
+        headers.push(...splitCsvLine(line));
+      } else {
+        const vals = splitCsvLine(line);
+        const row = {};
+        headers.forEach((h, idx) => { row[h.trim()] = (vals[idx] || '').replace(/^"(.*)"$/, '$1'); });
+        logs.push(row);
+      }
+    }
+  }
+  return { meta, logs };
+}
+
+function renderMeta(meta) {
+  setVal('tripId', meta.tripId || '');
+  setVal('title', meta.title || '');
+  setVal('startDate', meta.startDate || '');
+  setVal('endDate', meta.endDate || '');
+  setVal('boatName', meta.boatName || '');
+  setVal('boatModel', meta.boatModel || '');
+  setVal('yearOfManufacture', meta.yearOfManufacture || '');
+  setVal('homeMarina', meta.homeMarina || '');
+  setVal('captain', meta.captain || '');
+  setVal('priceEur', meta.priceEur || '');
+  setVal('crew', meta.crew || '');
+  setVal('captains', meta.captains || '');
+}
+
+function collectMeta() {
+  return {
+    tripId: getVal('tripId'),
+    title: getVal('title'),
+    startDate: getVal('startDate'),
+    endDate: getVal('endDate'),
+    boatName: getVal('boatName'),
+    boatModel: getVal('boatModel'),
+    yearOfManufacture: getVal('yearOfManufacture'),
+    homeMarina: getVal('homeMarina'),
+    captain: getVal('captain'),
+    crew: getVal('crew'),
+    captains: getVal('captains'),
+    priceEur: getVal('priceEur'),
+  };
+}
+
+function renderLogs(logs) {
+  const tbody = document.getElementById('logs-body');
+  tbody.innerHTML = '';
+  rowIdCounter = 0;
+  logs.forEach(log => appendRow(log));
+  updateRowCount();
+}
+
+function appendRow(log) {
+  const tbody = document.getElementById('logs-body');
+  const tr = document.createElement('tr');
+  const id = ++rowIdCounter;
+  tr.dataset.rowId = id;
+
+  const fields = ['day','date','totalDistanceNm','totalTime','sailsDistanceNm','sailsTime','sailDirection','interestingStops','overnightIsland','overnightCity','overnightBay','mooringType','location'];
+  const types = { day: 'number', totalDistanceNm: 'number', sailsDistanceNm: 'number', priceEur: 'number' };
+
+  let html = '<td class="row-actions"><button class="btn-del-row" onclick="deleteRow(this)" title="Delete row">&times;</button></td>';
+  fields.forEach(f => {
+    const val = log ? (log[f] || '') : '';
+    const type = types[f] || 'text';
+    html += `<td><input type="${type}" step="any" data-field="${f}" value="${escHtml(val)}"></td>`;
+  });
+  tr.innerHTML = html;
+  tbody.appendChild(tr);
+  updateRowCount();
+}
+
+function addRow() { appendRow({}); }
+
+function deleteRow(btn) {
+  const tr = btn.closest('tr');
+  if (document.getElementById('logs-body').children.length <= 1) return;
+  tr.remove();
+  updateRowCount();
+}
+
+function collectLogs() {
+  const rows = [];
+  document.querySelectorAll('#logs-body tr').forEach(tr => {
+    const row = {};
+    tr.querySelectorAll('input[data-field]').forEach(inp => { row[inp.dataset.field] = inp.value; });
+    rows.push(row);
+  });
+  return rows;
+}
+
+function updateRowCount() {
+  const count = document.querySelectorAll('#logs-body tr').length;
+  document.getElementById('row-count').textContent = count + ' row' + (count !== 1 ? 's' : '');
+}
+
+function setVal(id, val) { const el = document.getElementById('f-' + id); if (el) el.value = val; }
+function getVal(id) { const el = document.getElementById('f-' + id); return el ? el.value : ''; }
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function quoteCsv(val) {
+  if (/[,"\n\r]/.test(val)) return '"' + val.replace(/"/g, '""') + '"';
+  return val;
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status status-' + type;
+  el.classList.remove('hidden');
+}
+
+function hideStatus() {
+  document.getElementById('status').classList.add('hidden');
+}
+
+function loadCsv() {
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = '.csv';
+  inp.onchange = function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        const { meta, logs } = parseCsv(ev.target.result);
+        renderMeta(meta);
+        renderLogs(logs);
+        currentFileName = file.name;
+        showStatus('Loaded: ' + file.name, 'success');
+      } catch (err) {
+        showStatus('Parse error: ' + err.message, 'error');
+      }
+    };
+    reader.readAsText(file);
+  };
+  inp.click();
+}
+
+function newTrip() {
+  if (document.querySelectorAll('#logs-body tr').length > 0 || Object.values(collectMeta()).some(v => v)) {
+    if (!confirm('Clear all fields and start a new trip?')) return;
+  }
+  const today = new Date().toISOString().slice(0,10);
+  renderMeta({});
+  setVal('startDate', today);
+  renderLogs([{ day: '1', date: today }]);
+  currentFileName = '';
+  showStatus('New trip created', 'info');
+}
+
+function generateCsv() {
+  const meta = collectMeta();
+  const logs = collectLogs();
+
+  const metaKeys = ['tripId','title','startDate','endDate','boatName','boatModel','yearOfManufacture','homeMarina','captain','crew','captains','priceEur'];
+  let csv = '# METADATA\nKey,Value\n';
+  metaKeys.forEach(k => {
+    let v = meta[k] || '';
+    csv += k + ',' + quoteCsv(v) + '\n';
+  });
+
+  csv += '\n# DAILY LOGS\n';
+  const headers = ['day','date','totalDistanceNm','totalTime','sailsDistanceNm','sailsTime','sailDirection','interestingStops','overnightIsland','overnightCity','overnightBay','mooringType','location'];
+  csv += headers.join(',') + '\n';
+  logs.forEach(row => {
+    csv += headers.map(h => quoteCsv(row[h] || '')).join(',') + '\n';
+  });
+
+  return csv;
+}
+
+function saveCsv() {
+  const meta = collectMeta();
+  if (!meta.tripId && !meta.title) {
+    showStatus('Fill in at least trip ID or title before saving', 'error');
+    return;
+  }
+  const csv = generateCsv();
+  const name = currentFileName || (meta.tripId || 'new-trip') + '.csv';
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showStatus('Saved: ' + name, 'success');
+}
+</script>
+</body>
+</html>
