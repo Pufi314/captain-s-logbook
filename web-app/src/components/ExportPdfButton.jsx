@@ -170,7 +170,7 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
 
       {showExport && createPortal(
         <>
-        <div style={{ position: 'fixed', top: 0, left: 0, width: 1123, zIndex: -1, pointerEvents: 'none' }} ref={exportRef}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: 1123, zIndex: 1, pointerEvents: 'none' }} ref={exportRef}>
           <div style={{ background: 'white', padding: '20px 30px', fontFamily: 'sans-serif', color: '#333' }}>
             <h1 style={{ fontSize: 24, fontWeight: 'bold', margin: '0 0 4px', color: '#1a365d' }}>
               {translateTitle(metadata.title)}
