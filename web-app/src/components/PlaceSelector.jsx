@@ -24,7 +24,7 @@ const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect 
         </select>
       </h2>
       <select
-        className="w-full p-2 mb-4 border rounded"
+        className="w-full p-1 border rounded"
         value={value}
         onChange={(e) => onSelect(e.target.value || null)}
       >

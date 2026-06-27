@@ -3,7 +3,7 @@ import React from 'react';
 const TripSelector = ({ trips, value, onSelect }) => {
   return (
     <select 
-      className="w-full p-2 mb-4 border rounded"
+      className="w-full p-1 border rounded"
       value={value}
       onChange={(e) => onSelect(trips[e.target.value])}
     >
