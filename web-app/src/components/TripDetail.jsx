@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Ship, Calendar, Anchor, User, MapPin, DollarSign, X, ChevronDown, ChevronUp, Route } from 'lucide-react';
+import { useTranslation } from '../i18n/LanguageContext';
 
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -26,6 +27,7 @@ const parseGPX = (gpxText) => {
 };
 
 const TripDetail = ({ trip, csvFile, onClose, captain }) => {
+  const { t, translateTitle } = useTranslation();
   if (!trip) return null;
 
   const { metadata, dailyLogs } = trip;
@@ -118,8 +120,8 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
             <button className="bg-white/80 text-gray-400 px-3 py-1.5 rounded text-sm shadow cursor-not-allowed" disabled>&hellip;</button>
           )}
           {gpxStatus === 'missing' && (
-            <button className="bg-white/80 text-gray-400 px-3 py-1.5 rounded text-sm shadow cursor-not-allowed opacity-60 flex items-center gap-1" disabled title="No route recorded">
-              <Route className="w-4 h-4" /> Route
+            <button className="bg-white/80 text-gray-400 px-3 py-1.5 rounded text-sm shadow cursor-not-allowed opacity-60 flex items-center gap-1" disabled title={t('No route recorded')}>
+              <Route className="w-4 h-4" /> {t('Route')}
             </button>
           )}
           {gpxStatus === 'loaded' && (
@@ -132,7 +134,7 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
               }`}
             >
               <Route className="w-4 h-4" />
-              {showRoute ? 'Point' : 'Route'}
+              {showRoute ? t('Point') : t('Route')}
             </button>
           )}
         </div>
@@ -153,41 +155,41 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
   return (
     <div>
       <div className="flex items-center justify-between border-b pb-4 mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">{metadata.title}</h2>
-        <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title="Close">
+        <h2 className="text-2xl font-bold text-gray-800">{translateTitle(metadata.title)}</h2>
+        <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" title={t('Close')}>
           <X className="w-5 h-5 text-gray-400" />
         </button>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gray-50 p-4 rounded-lg">
-        <InfoItem icon={Ship} label="Boat" value={`${metadata.boatName} (${metadata.boatModel}, ${metadata.yearOfManufacture})`} />
-        <InfoItem icon={Calendar} label="Dates" value={`${metadata.startDate} to ${metadata.endDate}`} />
-        <InfoItem icon={MapPin} label="Home Marina" value={metadata.homeMarina} />
-        <InfoItem icon={User} label="Captain" value={metadata.captain} />
-        <InfoItem icon={DollarSign} label="Price (EUR)" value={metadata.priceEur} />
+        <InfoItem icon={Ship} label={t('Boat')} value={`${metadata.boatName} (${metadata.boatModel}, ${metadata.yearOfManufacture})`} />
+        <InfoItem icon={Calendar} label={t('Dates')} value={`${metadata.startDate} to ${metadata.endDate}`} />
+        <InfoItem icon={MapPin} label={t('Home Marina')} value={metadata.homeMarina} />
+        <InfoItem icon={User} label={t('Captain')} value={metadata.captain} />
+        <InfoItem icon={DollarSign} label={t('Price (EUR)')} value={metadata.priceEur} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-sm">
-        <p><strong>Crew:</strong> {metadata.crew?.join(', ')}</p>
-        <p><strong>Other Captains:</strong> {metadata.captains?.join(', ') || 'N/A'}</p>
+        <p><strong>{t('Crew:')}</strong> {metadata.crew?.join(', ')}</p>
+        <p><strong>{t('Other Captains:')}</strong> {metadata.captains?.join(', ') || t('N/A')}</p>
       </div>
       
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm whitespace-nowrap">
           <thead className="bg-gray-100">
             <tr>
-              <th className="p-3 text-left font-semibold text-gray-700">Day</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Date</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Dist</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Time</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Sails Dist</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Sails Time</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Dir</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Stops</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Island</th>
-              <th className="p-3 text-left font-semibold text-gray-700">City</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Bay</th>
-              <th className="p-3 text-left font-semibold text-gray-700">Mooring</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Day')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Date')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Dist')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Time')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Sails Dist')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Sails Time')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Dir')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Stops')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Island')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('City')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Bay')}</th>
+              <th className="p-3 text-left font-semibold text-gray-700">{t('Mooring')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
