@@ -7,8 +7,9 @@ import PlaceSelector from './components/PlaceSelector';
 import PlaceDetail from './components/PlaceDetail';
 import CrewSelector from './components/CrewSelector';
 import CrewDetail from './components/CrewDetail';
-import { Compass, HelpCircle } from 'lucide-react';
+import { Compass, HelpCircle, Languages } from 'lucide-react';
 import HelpDialog from './components/HelpDialog';
+import { useTranslation } from './i18n/LanguageContext';
 
 const CAPTAINS = [
   { key: 'michal', label: 'Michal', initial: 'M', fullName: 'Michal Puffler' },
@@ -51,6 +52,7 @@ function App() {
   }, [captain]);
 
   const currentCaptain = CAPTAINS.find(c => c.key === captain);
+  const { t, language, toggleLanguage } = useTranslation();
 
   const handleTripSelect = (trip) => {
     setSelectedTrip(trip);
@@ -90,20 +92,27 @@ function App() {
         <header className="bg-[#1a365d] text-white p-4 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <Compass className="w-8 h-8" />
-          <h1 className="text-2xl font-bold">Captain's Logbook Dashboard</h1>
+          <h1 className="text-2xl font-bold">{t("Captain's Logbook Dashboard")}</h1>
           <div className="ml-auto flex items-center gap-2">
           <button
             onClick={() => setHelpDialogOpen(true)}
             className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
-            aria-label="Help"
+            aria-label={t('Help')}
           >
             <HelpCircle className="w-5 h-5" />
+          </button>
+          <button
+            onClick={toggleLanguage}
+            className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold hover:bg-white/30 transition-colors"
+            aria-label={language === 'en' ? 'Switch to Slovak' : 'Prepnúť na angličtinu'}
+          >
+            {language === 'en' ? 'EN' : 'SK'}
           </button>
           <div className="relative" ref={captainRef}>
             <button
               onClick={() => setCaptainDropdownOpen(!captainDropdownOpen)}
               className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold hover:bg-white/30 transition-colors"
-              aria-label="Switch captain"
+              aria-label={t('Switch captain')}
             >
               {currentCaptain?.initial}
             </button>
@@ -129,12 +138,12 @@ function App() {
         {trips.length > 0 && <Dashboard trips={trips} onTripSelect={handleTripSelect} captainName={currentCaptain.fullName} />}
 
         <section>
-          <h2 className="text-xl font-bold text-white mb-4">Explore</h2>
+          <h2 className="text-xl font-bold text-white mb-4">{t('Explore')}</h2>
           <div className="space-y-4">
 
         <div id="voyage-section" className="bg-white/60 p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
           <div>
-            <h2 className="text-lg font-semibold mb-3 text-gray-700">Select a Voyage</h2>
+            <h2 className="text-lg font-semibold mb-3 text-gray-700">{t('Select a Voyage')}</h2>
             <TripSelector trips={trips} value={selectedTrip ? trips.indexOf(selectedTrip).toString() : ''} onSelect={(trip) => { setSelectedTrip(trip); setSelectedPlace(null); setSelectedCrew(null); }} />
           </div>
           {selectedTrip && (

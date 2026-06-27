@@ -1,25 +1,27 @@
 import React from 'react';
+import { useTranslation } from '../i18n/LanguageContext';
 
 const FILTER_OPTIONS = [
-  { label: 'Island', key: 'overnightIsland' },
-  { label: 'City', key: 'overnightCity' },
-  { label: 'Bay', key: 'overnightBay' },
+  { label: 'Island', labelKey: 'Island', key: 'overnightIsland' },
+  { label: 'City', labelKey: 'City', key: 'overnightCity' },
+  { label: 'Bay', labelKey: 'Bay', key: 'overnightBay' },
 ];
 
 const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect }) => {
+  const { t } = useTranslation();
   const places = Array.from(placeIndex.keys()).sort();
 
   return (
     <div>
       <h2 className="text-lg font-semibold text-gray-700 mb-3">
-        Select a Place
+        {t('Select a Place')}
         <select
           className="ml-1 p-1 border rounded text-sm align-middle"
           value={filterKey}
           onChange={(e) => onFilterChange(e.target.value)}
         >
           {FILTER_OPTIONS.map(opt => (
-            <option key={opt.key} value={opt.key}>{opt.label}</option>
+            <option key={opt.key} value={opt.key}>{t(opt.labelKey)}</option>
           ))}
         </select>
       </h2>
@@ -28,7 +30,7 @@ const PlaceSelector = ({ placeIndex, filterKey, value, onFilterChange, onSelect 
         value={value}
         onChange={(e) => onSelect(e.target.value || null)}
       >
-        <option value="" disabled>Select a {FILTER_OPTIONS.find(o => o.key === filterKey)?.label}</option>
+        <option value="" disabled>{t('Select a ')}{(t(FILTER_OPTIONS.find(o => o.key === filterKey)?.labelKey ?? '') ).toLowerCase()}</option>
         {places.map(place => (
           <option key={place} value={place}>{place}</option>
         ))}
