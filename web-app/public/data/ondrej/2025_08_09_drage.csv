@@ -1,0 +1,25 @@
+# METADATA
+Key,Value
+tripId,2025-08-09-drage
+title,Sailing trip from Drage
+startDate,2025-08-09
+endDate,2025-08-16
+boatName,Nabu
+boatModel,Bavaria Cruiser 46
+yearOfManufacture,2018
+homeMarina,Drage
+captain,Ondrej Puffler
+crew,"Ondrej Puffler; Jarka Pufflerová, Andrea Ferková, Laura Ferková"
+captains,
+priceEur,2323
+
+# DAILY LOGS
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2025-08-09,0.0,0:00,0.0,0:00,,,,Drage,,marína,"43.889929, 15.532969"
+2,2025-08-10,33.01,5:01,0.0,0:00,JV,,,Rogoznica,,mestské mólo,"43.526907, 15.968732"
+3,2025-08-11,21.33,4:09,0.0,0:00,S,,,Grebaštica,,kotva,"43.635102, 15.957938"
+4,2025-08-12,11.77,1:58,0.0,0:00,SZ,,,Vodice,,marína,"43.757222, 15.778697"
+5,2025-08-13,23.65,4:26,0.0,0:00,Z,,Kornati,,,kotva,"43.757320, 15.349393"
+6,2025-08-14,18.36,3:00,0.0,0:00,V,,,Tribunj,,marína,"43.751983, 15.747318"
+7,2025-08-15,18.63,4:12,0.0,0:00,V,Tankovanie vo Vodiciachbunker,,Drage,,marína,"43.889929, 15.532969"
+8,2025-08-16,0.0,0:00,0.0,0:00,,,,,,,"43.889929, 15.532969"

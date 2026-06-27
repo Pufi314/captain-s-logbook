@@ -4,22 +4,22 @@ tripId,2022-08-27-sukosan
 title,Sailing trip from Sukošan
 startDate,2022-08-27
 endDate,2022-09-03
-boatName,Rava
-boatModel,Bavaria Cruiser 46
-yearOfManufacture,2017
+boatName,Velez
+boatModel,Bavaria 40 BT
+yearOfManufacture,2013
 homeMarina,Sukoshan
 captain,Ondrej Puffler
-crew,"Ondrej Puffler; Jarka Pufflerová"
-captains,"Michal Puffler"
-priceEur,2747
+crew,"Ondrej Puffler; Jarka Pufflerová, Lubo Ďuriš, Monika Ďurišová, Martin Budinský, Zuzana Budinská"
+captains,Michal Puffler
+priceEur,1917
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
 1,2022-08-27,9.94,1:44,0.0,0:00,JV,,Pašman,Kraj,,kotva,"43.935798, 15.402892"
 2,2022-08-28,24.62,5:10,0.0,0:00,JV,,Zlarin,Zlarin,,molo,"43.699529, 15.833530"
-3,2022-08-29,42.12,7:42,12.02,1:59,SZ,,Dugi Otok,,Mir,molo,"43.892661, 15.157989"
+3,2022-08-29,42.12,7:42,0.0,0:00,SZ,,Dugi Otok,,Mir,molo,"43.892661, 15.157989"
 4,2022-08-30,8.8,5:50,0.0,0:00,S,,Dugi Otok,Sali,,molo,"43.935794, 15.166888"
-5,2022-08-31,30.83,8:59,0.67,0:25,SZ,Vrak,Dugi Otok,,Sakarun,boja,"44.131210, 14.873349"
+5,2022-08-31,30.83,8:59,0.5,0:10,SZ,Vrak,Dugi Otok,,Sakarun,boja,"44.131210, 14.873349"
 6,2022-09-01,7.4,1:25,0.0,0:00,SZ,,Dugi Otok,,Veli Rat,marína,"44.143862, 14.846670"
-7,2022-09-02,40.55,8:09,11.17,1:56,JV,Božava reštaurácia,Vrgada,Vrgada,,boja,"43.861468, 15.503626"
-8,2022-09-03,15.55,2:46,0.0,0:00,SZ,,,,,,"44.053964, 15.297551"
+7,2022-09-02,31.32,9:12,1.0,0:20,JV,Božava reštaurácia,,Sukošan,,marína,"44.053964, 15.297551"
+8,2022-09-03,0,0:0,0.0,0:00,SZ,,,,,,"44.053964, 15.297551"
