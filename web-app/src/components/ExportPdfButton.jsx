@@ -47,6 +47,7 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
   const [showExport, setShowExport] = useState(false);
   const [gpxData, setGpxData] = useState({});
   const [mapReady, setMapReady] = useState(false);
+  const [capturing, setCapturing] = useState(false);
   const exportRef = useRef(null);
 
 
@@ -82,6 +83,7 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
     setGpxData(gpxResults);
 
     setTimeout(async () => {
+      setCapturing(true);
       await new Promise(r => setTimeout(r, 500));
 
       try {
@@ -148,6 +150,7 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
       }
 
       setShowExport(false);
+      setCapturing(false);
       setExporting(false);
     }, 100);
   }, [trip, csvFile, captain, locations]);
@@ -169,8 +172,7 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
       </button>
 
       {showExport && createPortal(
-        <>
-        <div style={{ position: 'fixed', top: 0, left: 0, width: 1123, zIndex: 1, pointerEvents: 'none' }} ref={exportRef}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: 1123, zIndex: 9999, pointerEvents: 'none' }} ref={exportRef}>
           <div style={{ background: 'white', padding: '20px 30px', fontFamily: 'sans-serif', color: '#333' }}>
             <h1 style={{ fontSize: 24, fontWeight: 'bold', margin: '0 0 4px', color: '#1a365d' }}>
               {translateTitle(metadata.title)}
@@ -265,25 +267,26 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
               </tbody>
             </table>
           </div>
-        </div>
 
-        <div style={{
-          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-          zIndex: 9999, background: 'rgba(255,255,255,0.9)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'sans-serif'
-        }}>
-          <div style={{
-            width: 40, height: 40, border: '4px solid #e5e7eb',
-            borderTopColor: '#1a365d', borderRadius: '50%',
-            animation: 'pdf-spin 1s linear infinite'
-          }} />
-          <div style={{ fontSize: 18, fontWeight: 600, color: '#1a365d', marginTop: 16 }}>
-            {t('Generating PDF')}...
-          </div>
-          <style>{`@keyframes pdf-spin{to{transform:rotate(360deg)}}`}</style>
-        </div>
-        </>,
+          {!capturing && (
+            <div style={{
+              position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+              background: 'rgba(255,255,255,0.9)',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'sans-serif'
+            }}>
+              <div style={{
+                width: 40, height: 40, border: '4px solid #e5e7eb',
+                borderTopColor: '#1a365d', borderRadius: '50%',
+                animation: 'pdf-spin 1s linear infinite'
+              }} />
+              <div style={{ fontSize: 18, fontWeight: 600, color: '#1a365d', marginTop: 16 }}>
+                {t('Generating PDF')}...
+              </div>
+              <style>{`@keyframes pdf-spin{to{transform:rotate(360deg)}}`}</style>
+            </div>
+          )}
+        </div>,
         document.body
       )}
     </>
