@@ -1,4 +1,4 @@
-# METADATA
+﻿# METADATA
 Key,Value
 tripId,2017-04-29-sukosan
 title,Sailing trip from Sukošan
@@ -7,7 +7,7 @@ endDate,2017-05-06
 boatName,Iris 1
 boatModel,Bavaria Cruiser 46
 yearOfManufacture,2015
-homeMarina,Sukoshan
+homeMarina,Sukošan
 captain,Jiří Chlumský
 crew,"Michal Puffler; Dominika Pufflerová; Jano Neščivera; Ondrej Kollár; Vlado Brunn; Jano Marcinčin; Petr Kunčík; Lukáš Kunčík; Jiří Chlumský"
 captains,N/A
@@ -15,11 +15,11 @@ priceEur,N/A
 
 # DAILY LOGS
 day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
-1,2017-04-29,0.0,0:00,0.0,0:00,,,,Sukoshan,,marina,"44.055158, 15.296340"
+1,2017-04-29,0.0,0:00,0.0,0:00,,,,Sukošan,,marina,"44.055158, 15.296340"
 2,2017-04-30,35.0,8:14,27.29,4:58,JV,,Kaprije,,Mala Nozdra,kotva,"43.686413, 15.725984"
 3,2017-05-01,42.4,9:06,15.64,3:21,SZ,Zlarin,Dugi Otok,,Mir,boja,"43.894818, 15.161219"
-4,2017-05-02,41.3,10:52,0.0,0:00,SV,Sali,,Sukoshan,,marina,"44.055158, 15.296340"
+4,2017-05-02,41.3,10:52,0.0,0:00,SV,Sali,,Sukošan,,marina,"44.055158, 15.296340"
 5,2017-05-03,27.7,8:23,18.07,4:09,SZ,,Dugi Otok,,Veli Rat,boja,"44.159669, 14.833413"
 6,2017-05-04,27.3,9:44,6.9,2:10,V,"Vrak, Sakarun, Ponorkovy bunker",Ugljan,Muline,,molo,"44.137228, 15.070578"
-7,2017-05-05,14.2,2:20,0.0,0:00,JV,Zadar pumpa,,Sukoshan,,marina,"44.055158, 15.296340"
+7,2017-05-05,14.2,2:20,0.0,0:00,JV,Zadar pumpa,,Sukošan,,marina,"44.055158, 15.296340"
 8,2017-05-06,0.0,0:00,0.0,0:00,,,,,,,"44.055158, 15.296340"
