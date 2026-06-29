@@ -34,6 +34,7 @@ const sk = {
   "Price (EUR)": "Cena (EUR)",
   "Crew:": "Posádka:",
   "Other Captains:": "Ostatní kapitáni:",
+  "Other Captains": "OSTATNÍ KAPITÁNI:",
   "N/A": "N/A",
   "Day": "Deň",
   "Date": "Dátum",
