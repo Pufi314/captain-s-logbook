@@ -1,0 +1,25 @@
+# METADATA
+Key,Value
+tripId,2026_08_08_drage
+title,Sailing trip from Drage
+startDate,2026-08-08
+endDate,2026-12-08
+boatName,Dia
+boatModel,Bavaria Cruiser 46
+yearOfManufacture,2018
+homeMarina,Drage
+captain,Michal Puffler
+crew,Michal Puffler; Dominika Pufflerová; Miro Vincze; Katka Vincze; Braňo Košík; Mary; Gabriela Vinczeova; Konstantin Kochkin
+captains,Ondrej Puffler
+priceEur,2403
+
+# DAILY LOGS
+day,date,totalDistanceNm,totalTime,sailsDistanceNm,sailsTime,sailDirection,interestingStops,overnightIsland,overnightCity,overnightBay,mooringType,location
+1,2026-08-08,12.04,2:33,0.0,0:00,Z,,Žut,,Podrazanj,marína,"43.880604, 15.288955"
+2,2026-08-09,48.33,9:02,0.0,0:00,SZ,Golubinka,Olib,,Slatinica,boja,"44.383280, 14.796567"
+3,2026-08-10,24.65,3:39,0.0,0:00,JV,,Iž,Veli Iž,,marína,"44.051140, 15.110790"
+4,2026-08-11,22.27,3:25,0.0,0:00,JV,,Kornati,,Lopatica,kotva,"43.786510, 15.339439"
+5,2026-08-12,18.39,2:46,0.0,0:00,V,,Kaprije,Kaprije,,boja,"43.686207, 15.709177"
+6,2026-08-13,12.6,3:22,7.2,1:24,SV,Mali Borovnjak,,Vodice,,marína,"43.757306, 15.778797"
+7,2026-08-14,19.01,3:05,0.0,0:00,SZ,,,Drage,,marína,"43.890182, 15.534255"
+8,2026-08-15,0.0,0.0,0.0,0.0,,,,Drage,,marína,"43.890182, 15.534255"
