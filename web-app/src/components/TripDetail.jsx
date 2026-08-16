@@ -34,6 +34,18 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
   const { metadata, dailyLogs } = trip;
   const [expandedRowIndex, setExpandedRowIndex] = useState(null);
 
+  const formatTime = (minutes) => {
+    if (!minutes) return '0:00';
+    const h = Math.floor(minutes / 60);
+    const m = Math.round(minutes % 60);
+    return `${h}:${m.toString().padStart(2, '0')}`;
+  };
+
+  const totalDist = dailyLogs.reduce((s, l) => s + (l.totalDistanceNm || 0), 0);
+  const totalMin = dailyLogs.reduce((s, l) => s + (l.totalTimeMinutes || 0), 0);
+  const sailsDist = dailyLogs.reduce((s, l) => s + (l.sailsDistanceNm || 0), 0);
+  const sailsMin = dailyLogs.reduce((s, l) => s + (l.sailsTimeMinutes || 0), 0);
+
   const MapResizer = () => {
     const map = useMap();
     React.useEffect(() => {
@@ -224,6 +236,14 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
                 </React.Fragment>
               );
             })}
+            <tr className="bg-gray-100 font-semibold text-gray-800">
+              <td className="p-3 text-gray-700" colSpan="2">{t('Total')}</td>
+              <td className="p-3 text-gray-700">{totalDist.toFixed(1)}</td>
+              <td className="p-3 text-gray-700">{formatTime(totalMin)}</td>
+              <td className="p-3 text-gray-700">{sailsDist.toFixed(1)}</td>
+              <td className="p-3 text-gray-700">{formatTime(sailsMin)}</td>
+              <td className="p-3" colSpan="6"></td>
+            </tr>
           </tbody>
         </table>
       </div>

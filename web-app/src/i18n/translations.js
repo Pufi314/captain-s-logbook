@@ -38,6 +38,7 @@ const sk = {
   "N/A": "N/A",
   "Day": "Deň",
   "Date": "Dátum",
+  "Total": "Celkom",
   "Dist": "Vzdial.",
   "Time": "Čas",
   "Sails Dist": "Plach. vzdial.",

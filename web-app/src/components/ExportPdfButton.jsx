@@ -153,6 +153,13 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
     }, 100);
   }, [trip, csvFile, captain, locations]);
 
+  const formatTime = (minutes) => {
+    if (!minutes) return '0:00';
+    const h = Math.floor(minutes / 60);
+    const m = Math.round(minutes % 60);
+    return `${h}:${m.toString().padStart(2, '0')}`;
+  };
+
   const totalDist = dailyLogs.reduce((s, l) => s + (l.totalDistanceNm || 0), 0);
   const totalMin = dailyLogs.reduce((s, l) => s + (l.totalTimeMinutes || 0), 0);
   const sailsDist = dailyLogs.reduce((s, l) => s + (l.sailsDistanceNm || 0), 0);
@@ -263,6 +270,14 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
                     <td style={{ padding: '5px 8px' }}>{log.mooringType}</td>
                   </tr>
                 ))}
+                <tr style={{ height: 30, background: '#f9fafb', fontWeight: 600 }}>
+                  <td colSpan="2" style={{ padding: '5px 8px', color: '#555' }}>{t('Total')}</td>
+                  <td style={{ padding: '5px 8px' }}>{totalDist.toFixed(1)}</td>
+                  <td style={{ padding: '5px 8px' }}>{formatTime(totalMin)}</td>
+                  <td style={{ padding: '5px 8px' }}>{sailsDist.toFixed(1)}</td>
+                  <td style={{ padding: '5px 8px' }}>{formatTime(sailsMin)}</td>
+                  <td colSpan="6" style={{ padding: '5px 8px' }}></td>
+                </tr>
               </tbody>
             </table>
           </div>
