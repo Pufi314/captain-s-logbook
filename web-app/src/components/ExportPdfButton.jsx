@@ -272,10 +272,10 @@ function ExportPdfButton({ trip, csvFile, captain, onClose }) {
                 ))}
                 <tr style={{ height: 30, background: '#f9fafb', fontWeight: 600 }}>
                   <td colSpan="2" style={{ padding: '5px 8px', color: '#555' }}>{t('Total')}</td>
-                  <td style={{ padding: '5px 8px' }}>{totalDist.toFixed(1)}</td>
-                  <td style={{ padding: '5px 8px' }}>{formatTime(totalMin)}</td>
-                  <td style={{ padding: '5px 8px' }}>{sailsDist.toFixed(1)}</td>
-                  <td style={{ padding: '5px 8px' }}>{formatTime(sailsMin)}</td>
+                  <td style={{ padding: '5px 8px' }}>{totalDist.toFixed(1)} NM</td>
+                  <td style={{ padding: '5px 8px' }}>{formatTime(totalMin)} h</td>
+                  <td style={{ padding: '5px 8px' }}>{sailsDist.toFixed(1)} NM</td>
+                  <td style={{ padding: '5px 8px' }}>{formatTime(sailsMin)} h</td>
                   <td colSpan="6" style={{ padding: '5px 8px' }}></td>
                 </tr>
               </tbody>

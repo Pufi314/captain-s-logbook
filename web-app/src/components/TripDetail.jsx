@@ -238,10 +238,10 @@ const TripDetail = ({ trip, csvFile, onClose, captain }) => {
             })}
             <tr className="bg-gray-100 font-semibold text-gray-800">
               <td className="p-3 text-gray-700" colSpan="2">{t('Total')}</td>
-              <td className="p-3 text-gray-700">{totalDist.toFixed(1)}</td>
-              <td className="p-3 text-gray-700">{formatTime(totalMin)}</td>
-              <td className="p-3 text-gray-700">{sailsDist.toFixed(1)}</td>
-              <td className="p-3 text-gray-700">{formatTime(sailsMin)}</td>
+              <td className="p-3 text-gray-700">{totalDist.toFixed(1)} NM</td>
+              <td className="p-3 text-gray-700">{formatTime(totalMin)} h</td>
+              <td className="p-3 text-gray-700">{sailsDist.toFixed(1)} NM</td>
+              <td className="p-3 text-gray-700">{formatTime(sailsMin)} h</td>
               <td className="p-3" colSpan="6"></td>
             </tr>
           </tbody>
