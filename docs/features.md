@@ -67,6 +67,7 @@
 - Horizontal scroll wrapper for narrow screens
 - 12 columns: Day, Date, Dist, Time, Sails Dist, Sails Time, Dir, Stops, Island, City, Bay, Mooring
 - Styled header, hover row highlighting, row dividers
+- **Summary row** at the bottom showing Total distance (NM), Total time (h), Sails distance (NM), and Sails time (h)
 - Clicking a row with a location expands a map below it
 - Chevron indicators for expandable rows
 
@@ -159,7 +160,7 @@
   - **Overview map** — Leaflet map with numbered day markers and GPX route polylines, side-by-side with metadata (metadata left, map right, both 300px tall)
   - **Metadata** — boat, home marina, captain, crew, other captains, price
   - **Summary statistics** — total miles, hours, sail percentages
-  - **Daily log table** — full 12-column table with fixed row heights
+  - **Daily log table** — full 12-column table with fixed row heights and a **summary totals row** at the bottom
 - Multi-page support: content splits at table row boundaries if it exceeds one page; leftover rows render at proportional height (no stretching)
 - Side-by-side layout saves vertical space, fitting most trips (≤10 rows) on a single page
 - Loading overlay (centered spinner + "Generating PDF..." text) covers the page from click through capture to prevent flash of overlapping content
