@@ -15,6 +15,8 @@ const sk = {
   "Anchor/Buoy %": "Kotva/Bója %",
   "Anchor:": "Kotva:",
   "Buoy:": "Bója:",
+  night: "noc",
+  nights: "nocí",
   Trips: "Plavby",
   "as captain:": "ako kapitán:",
   Records: "Rekordy",

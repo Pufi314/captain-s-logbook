@@ -27,7 +27,7 @@
 - **Total Hours** (computed from minutes, 1 decimal)
 - **Sails Miles %** — percentage of distance under sail
 - **Sails Hours %** — percentage of time under sail
-- **Anchor/Buoy %** — percentage of overnight moorings by type
+- **Anchor/Buoy %** — percentage and night counts of overnight moorings by type
 - **Trips** — total number of trips + count where the selected captain is listed as captain
 - StatCard component: icon in blue circle, uppercase label, bold value
 - Responsive grid: 1 col (mobile) → 2 col (tablet) → 3 col (desktop)
