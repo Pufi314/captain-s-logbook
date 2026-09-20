@@ -55,8 +55,8 @@ const Dashboard = ({ trips, onTripSelect, captainName }) => {
             <div className="p-2 bg-blue-50 text-blue-700 rounded-full"><Anchor className="w-5 h-5" /></div>
             <div>
               <h3 className="text-gray-500 text-xs uppercase font-semibold tracking-wider">{t('Anchor/Buoy %')}</h3>
-              <p className="text-sm font-bold">{t('Anchor:')} {((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1)}% ({aggregated.kotvaCount} {aggregated.kotvaCount === 1 ? t('night') : t('nights')})</p>
-              <p className="text-sm font-bold">{t('Buoy:')} {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1)}% ({aggregated.bojaCount} {aggregated.bojaCount === 1 ? t('night') : t('nights')})</p>
+              <p className="text-sm font-bold">{t('Anchor:')} {((aggregated.kotvaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1)}% <span className="text-gray-500 font-normal">({aggregated.kotvaCount} {aggregated.kotvaCount === 1 ? t('night') : t('nights')})</span></p>
+              <p className="text-sm font-bold">{t('Buoy:')} {((aggregated.bojaCount / (aggregated.totalOvernights || 1)) * 100).toFixed(1)}% <span className="text-gray-500 font-normal">({aggregated.bojaCount} {aggregated.bojaCount === 1 ? t('night') : t('nights')})</span></p>
             </div>
           </div>
           <div className="bg-white/60 p-3 h-[80px] rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
